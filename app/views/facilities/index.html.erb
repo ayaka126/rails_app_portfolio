@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>保育園一覧</h1>
+
+<div id="facilities">
+  <% @facilities.each do |facility| %>
+    <%= render facility %>
+    <p>
+      <%= link_to "Show this facility", facility %>
+    </p>
+  <% end %>
+</div>
+<button type="button" class="btn btn-primary">Primary</button>
+<%= link_to "新規登録", new_facility_path, class: "btn btn-primary" %>
