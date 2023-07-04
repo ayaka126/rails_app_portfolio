@@ -1,0 +1,6 @@
+<p>ようこそ！<%= current_user.name %>様</p>
+
+<div>
+  <%= link_to "ユーザー情報を編集する", edit_user_path %>
+  <%= button_to "ログアウト", logout_path, method: :delete %>
+</div>

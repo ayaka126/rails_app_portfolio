@@ -51,6 +51,11 @@ gem "bootsnap", require: false
 gem 'bootstrap', '~> 5.1.3'
 gem 'mini_racer'
 
+# 暗号化
+gem 'bcrypt'
+
+gem 'pry-rails'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

@@ -10,8 +10,43 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ * require_tree .  
  *= require_self
  */
 
 @import "bootstrap";
+
+body {
+	height: 100%;
+  }
+
+.container{
+  text-align: center;
+  }
+
+.form-floating {
+  width: 100%;
+  max-width: 370px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-check {
+  font-weight: 400;
+}
+
+.form-floating:focus-within {
+  z-index: 2;
+}
+
+// .form-floating input[type="email"] {
+//   margin-bottom: -1px;
+//   border-bottom-right-radius: 0;
+//   border-bottom-left-radius: 0;
+// }
+
+// .form-floating input[type="password"] {
+//   margin-bottom: 10px;
+//   border-top-left-radius: 0;
+//   border-top-right-radius: 0;
+// }
