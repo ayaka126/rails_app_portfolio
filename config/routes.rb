@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root   'top#index'
+  root 'homes#top'
   get    '/login',  to: 'sessions#new'
   post   '/login',  to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  resource :user
+  resource :user, only: [:new, :create, :show]
   resources :facilities
 end

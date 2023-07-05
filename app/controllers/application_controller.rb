@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def login?
     if current_user.nil?
-      redirect_to login_path, alert: "ログインしてください"
+      redirect_to login_path, alert: "ログインされていません"
     end
   end
 
@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
     unless current_user.nil?
       redirect_to user_path, notice: "ログイン済みです"
     end
-  end
 
+  end
   def current_user
     if session[:user_id]
-      @current_user ||= User.find_by(id:session[:user_id])
+      current_user ||=User.find(session[:user_id])
     end
   end
 end

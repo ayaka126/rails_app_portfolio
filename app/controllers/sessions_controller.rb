@@ -1,12 +1,12 @@
 class SessionsController < ApplicationController
-  before_action :already_login?, except: :destroy
+  before_action :already_login?, exept: :destroy
 
   def new
   end
 
   def create
-    user = User.find_by(email: session_params[:email].downcase)
-    if user &.authenticate(session_params[:password])
+    user = User.find_by(email: params[:email].downcase)
+    if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to user_path, notice: "ログインしました"
     else
@@ -18,11 +18,5 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to root_path, notice: "ログアウトしました"
-  end
-
-private
-
-  def session_params
-    params.permit(:email, :password)
   end
 end
