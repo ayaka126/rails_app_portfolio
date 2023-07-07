@@ -1,0 +1,28 @@
+<h2>ユーザー情報を編集</h2>
+<%= form_with model: @user do |f| %>
+	<div class="field">
+		<%= f.label :name, "お名前" %>
+		<%= f.text_field :username %>
+	</div>
+	<div class = "field">
+		<%= f.label :email, "メールアドレス" %>
+		<%= f.text_field :email %>
+	</div>
+	<div class = "field">
+		<%= f.label :password, "パスワード" %>
+		<%= f.password_field :password %>
+	</div>
+	<div class = "field">
+		<%= f.label :password_confirmation, "パスワード（確認用）" %>
+		<%= f.password_field :password_confirmeation %>
+	</div>
+	<div class="field">
+		<%= f.label :userimage, "アイコン画像" %>
+		<%= f.file_field :userimage %>
+	</div>
+	<div class = "acition">
+		<%= f.submit "編集を完了する" %>
+		<%= link_to "マイページに戻る", user_path %>
+	</div>
+
+<% end %>

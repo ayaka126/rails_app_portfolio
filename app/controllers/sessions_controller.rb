@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :already_login?, exept: :destroy
+  before_action :already_login?, only: [:new, :create]
 
   def new
   end
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: "ログアウトしました"
+    redirect_to root_path, status: :see_other
+    flash.now[:notice] = "ログアウトしました"
   end
 end

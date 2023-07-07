@@ -1,3 +1,8 @@
 <h1>ユーザーページ</h1>
-<p>ログイン中です/<%= current_user.email %></p>
+<%= link_to "編集", edit_user_path %>
+<%= button_to "削除", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
+<p>ようこそ！<%= current_user.username %>様</p>
+<% if current_user.userimage.attached? %>
+	<%= image_tag current_user.userimage.variant(resize_to_limit: [200, 200]) %>
+<% end %>
 <%= button_to "ログアウト", logout_path, method: :delete %>

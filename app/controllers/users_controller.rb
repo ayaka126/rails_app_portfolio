@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :already_login?, only: [:new, :create]
+  before_action :already_login?, only: [:new, :create, :destroy]
   before_action :login?, only: :show
 
   def new
@@ -17,12 +17,32 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:user_id])
+  end
+
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    if @user.update(user_params)
+      redirect_to user_path, notice: "情報を更新しました"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @user = User.find(session[:user_id])
+    @user.destroy
+    redirect_to root_path, notice: "ユーザーを削除しました"
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :userimage, :email, :password, :password_confirmation)
   end
 
 end
