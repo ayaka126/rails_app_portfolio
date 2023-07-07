@@ -1,7 +1,8 @@
 <h1>新規登録</h1>
 <%= form_with model: @user, url: user_path, local: true do |f| %>
+	<%= render "shared/error", object: f.object %>
 <div class="field">
-  <%= f.label :name, "お名前" %>
+  <%= f.label :username, "お名前" %>
   <%= f.text_field :username %>
 </div>
 <div class = "field">

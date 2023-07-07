@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      facility: 保育園
+    attributes:
+      user:
+        username: お名前
+        email: メールアドレス
+        password: パスワード
+        userimage: アイコン画像
+      facility:
+        name: 保育園名
+        address: 住所
+        station: 最寄駅
+        tel: 電話番号
+        homepage: HP

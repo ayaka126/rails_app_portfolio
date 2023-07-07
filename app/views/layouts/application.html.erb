@@ -50,8 +50,8 @@
     <%= button_to "ログアウト", logout_path, class: "btn btn-outline-primary", method: :delete %>
 </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
+    <p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p> 
     <div class="container">
       <%= yield %>
     </div>
