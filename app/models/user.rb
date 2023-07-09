@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_one_attached :userimage
 
   validates :username, presence: true, length: { minimum: 1, maximum: 30 }
-  validates :email, presence: true, length: { maximum: 255 }
+  validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   has_secure_password
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]{6,}+\z/i.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX, message: "は半角英数を両方含む6文字以上で設定してください" }

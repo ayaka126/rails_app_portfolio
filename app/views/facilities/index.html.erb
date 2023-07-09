@@ -1,14 +1,31 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>保育園一覧</h1>
+<thead>
+  <tr>
+    <th>保育園名</th>
+    <th>住所</th>
+    <th>最寄駅</th>
+    <th>電話番号</th>
+    <th>HP</th>
+    <th>更新日</th>
+    <th>作成日</th>
+    <th>参照</th>
+  </tr>
+</thead>
 
-<div id="facilities">
+<tbody>
   <% @facilities.each do |facility| %>
-    <%= render facility %>
-    <p>
-      <%= link_to "Show this facility", facility %>
-    </p>
+    <tr>
+      <td><%= facility.name %></td>
+      <td><%= facility.address %></td>
+      <td><%= facility.station %></td>
+      <td><%= facility.tel %></td>
+      <td><%= facility.homepage %></td>
+      <td><%= facility.updated_at.to_s(:datetime_jp) %></td>
+      <td><%= facility.created_at.to_s(:datetime_jp) %></td>
+      <td>
+        <%= link_to "参照", facility_path(facility) %>
+      </td>
+    </tr>
   <% end %>
-</div>
-<%= link_to "新規登録", new_facility_path, class: "btn btn-primary" %>
+</tbody><%= link_to "新規登録", new_facility_path, class: "btn btn-primary" %>
 

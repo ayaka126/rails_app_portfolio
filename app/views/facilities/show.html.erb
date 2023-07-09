@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @facility %>
-
+<h2><%= @facility.name %></h2>
+<table>
+  <tr>
+    <th>保育園名</th>
+    <td><%= @facility.name %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @facility.address %></td>
+  </tr>
+  <tr>
+    <th>最寄駅</th>
+    <td><%= @facility.station %></td>
+  </tr>
+  <tr>
+    <th>電話番号</th>
+    <td><%= @facility.tel %></td>
+  </tr>
+  <tr>
+    <th>HPリンク</th>
+    <td><%= link_to @facility.homepage %></td>
+  </tr>
+</table>
 <div>
-  <%= link_to "Edit this facility", edit_facility_path(@facility) %> |
-  <%= link_to "Back to facilities", facilities_path %>
-
-  <%= button_to "Destroy this facility", @facility, method: :delete %>
+  <%= link_to "編集", edit_facility_path(@facility) %> |
+  <%= link_to "保育園一覧へ戻る", facilities_path %>
+  <%= button_to "削除", @facility, method: :delete %>
 </div>

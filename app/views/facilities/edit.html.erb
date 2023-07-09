@@ -1,10 +1,29 @@
-<h1>Editing facility</h1>
-
-<%= render "form", facility: @facility %>
-
-<br>
-
-<div>
-  <%= link_to "Show this facility", @facility %> |
-  <%= link_to "Back to facilities", facilities_path %>
+<h2><%= @facility.name %>を編集する</h2>
+<%= form_with model: @facility, local: true do |f| %>
+	<%= render "shared/error", object: f.object %>
+<div class="field">
+  <%= f.label :name, "保育園名" %>
+  <%= f.text_field :name %>
 </div>
+<div class = "field">
+	<%= f.label :address, "住所" %>
+	<%= f.text_field :address %>
+</div>
+<div class = "field">
+	<%= f.label :station, "最寄駅" %>
+	<%= f.text_field :station %>
+</div>
+<div class = "field">
+	<%= f.label :tel, "電話番号" %>
+	<%= f.text_field :tel %>
+</div>
+<div class="field">
+  <%= f.label :homepage, "HP" %>
+  <%= f.text_field :homepage %>
+</div>
+<div class = "acition">
+	<%= f.submit "編集を完了する" %>
+</div>
+  <%= link_to "詳細ページへ戻る", facility_path(@facility) %> |
+  <%= link_to "保育園一覧へ戻る", facilities_path %>
+<% end %>

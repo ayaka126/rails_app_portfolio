@@ -6,7 +6,6 @@ class FacilitiesController < ApplicationController
   end
 
   def show
-    @facilities = facility.find(params[id])
   end
 
   def new
@@ -18,13 +17,24 @@ class FacilitiesController < ApplicationController
 
   def create
     @facility = Facility.new(facility_params)
+    if @facility.save
+      redirect_to facility_path(@facility), notice: "新規登録が完了しました"
+    else
+      render :new,  status: :unprocessable_entity
+    end
   end
 
   def update
+    if @facility.update(facility_params)
+      redirect_to facility_path, notice: "情報を更新しました"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @facility.destroy
+    redirect_to facilities_path
   end
 
   private
