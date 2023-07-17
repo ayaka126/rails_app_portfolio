@@ -3,6 +3,8 @@ ja:
     models:
       user: ユーザー
       facility: 保育園
+      post: 投稿
+      comment: コメント
     attributes:
       user:
         username: お名前
@@ -15,3 +17,8 @@ ja:
         station: 最寄駅
         tel: 電話番号
         homepage: HP
+      post:
+        title: タイトル
+        content: 内容
+      comment:
+        content: 内容

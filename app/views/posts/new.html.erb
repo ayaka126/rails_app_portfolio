@@ -1,0 +1,16 @@
+<h1>質問・相談・交流などなんでも</h1>
+<%= form_with(model: [@facility, @post], local: true) do |f| %>
+	<%= render "shared/error", object: f.object %>
+	<div class="field">
+		<%= f.label :title, "タイトル" %>
+		<%= f.text_field :title %>
+	</div>
+	<div class = "field">
+		<%= f.label :content, "内容" %>
+		<%= f.text_area :content, rows: 30, cols: 30 %>
+	</div>
+	<div class = "acition">
+		<%= f.submit "投稿する" %>
+	</div>
+	<%= link_to "投稿一覧へ戻る", facility_posts_path %>
+<% end %>

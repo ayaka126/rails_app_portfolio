@@ -12,7 +12,6 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path, notice: "新規登録が完了しました"
     else
-      flash.now[:alert] = "登録できませんでした"
       render :new, status: :unprocessable_entity
     end
   end

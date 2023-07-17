@@ -22,6 +22,7 @@ body {
 
 .container{
   text-align: center;
+  margin: 30px;
   }
 
 .field {
@@ -59,4 +60,13 @@ input{
 
 .alert li{
   list-style: none;
+}
+.table{
+  text-align: center;
+}
+table th {
+  background-color: #FFFFCC; padding:10px 20px;
+}
+table td{
+  background-color: #FFFFDD; padding:10px 20px;
 }

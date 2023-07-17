@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :userimage
+  has_many :posts
+  has_many :comments
 
   validates :username, presence: true, length: { minimum: 1, maximum: 30 }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }

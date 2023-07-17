@@ -1,0 +1,20 @@
+<h2><%= @post.title %></h2>
+<p><%= @post.content %></p>
+<%= form_with model: [@post, @comment], url: facility_post_comments_path(@facility, @post), local: false do |f| %>
+	<%= f.text_area :content, rows:'5',placeholder: "コメントをご記入ください", class:"form-control mt-3"  %>
+	<div class="text-right">
+		<%= f.submit "コメントする", class: "btn btn-primary mt-3 mb-3" %>
+	</div>
+<% end %>
+<% @post_comments.each do |comment| %>
+	<div class="col-3 text-center">
+		<% if comment.user.userimage.present? %>
+			<%= image_tag comment.user.userimage.url, alt: "アイコン" %>
+		<% else %>
+			<%= image_tag "default_userimage.png", alt: "アイコン", size: "50x50" %>
+		<% end %>		
+		<%= comment.user.username %>
+		<p><%= comment.content %></p>
+	</div>
+	<%= link_to "削除", facility_post_comments_path(comment.post, comment), method: :delete, remote: true, "data-confirm" => t('本当に削除しますか？'), class: "btn-sm btn-danger" %></td>
+<% end %>

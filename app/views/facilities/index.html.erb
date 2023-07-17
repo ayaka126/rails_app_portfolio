@@ -1,4 +1,6 @@
+<div class="container">
 <h1>保育園一覧</h1>
+<table>
 <thead>
   <tr>
     <th>保育園名</th>
@@ -19,13 +21,15 @@
       <td><%= facility.address %></td>
       <td><%= facility.station %></td>
       <td><%= facility.tel %></td>
-      <td><%= facility.homepage %></td>
-      <td><%= facility.updated_at.to_s(:datetime_jp) %></td>
-      <td><%= facility.created_at.to_s(:datetime_jp) %></td>
+      <td><%= link_to facility.homepage %></td>
+      <td><%= facility.updated_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>
+      <td><%= facility.created_at.strftime("%Y年%m月%d日 %H:%M:%S") %></td>
       <td>
         <%= link_to "参照", facility_path(facility) %>
       </td>
     </tr>
   <% end %>
-</tbody><%= link_to "新規登録", new_facility_path, class: "btn btn-primary" %>
-
+</tbody>
+</tabel>
+<%= link_to "新規登録", new_facility_path, class: "btn btn-primary" %>
+</div>
