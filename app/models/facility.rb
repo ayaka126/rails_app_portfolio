@@ -1,5 +1,7 @@
 class Facility < ApplicationRecord
     has_many :posts, dependent: :destroy
+    geocoded_by :address
+    after_validation :geocode
     validates :name, presence: true, uniqueness: true, length: { minimum: 4, maximum: 30 }
     validates :address, presence: true
     validates :station, presence: true
