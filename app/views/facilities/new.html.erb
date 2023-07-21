@@ -3,23 +3,23 @@
 	<%= render "shared/error", object: f.object %>
 <div class="field">
   <%= f.label :name, "保育園名", class: "form-label fw-bold" %>
-  <%= f.text_field :name, autofocus: true,placeholder: "保育園名を入力してください", class: "form-control" %>
+  <%= f.text_field :name, autofocus: true, placeholder: "保育園名を入力してください", class: "form-control" %>
 </div>
 <div class = "field">
 	<%= f.label :address, "住所", class: "form-label fw-bold" %>
-	<%= f.text_field :address, autofocus: true,placeholder: "住所を入力してください", class: "form-control" %>
+	<%= f.text_field :address, autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
 </div>
 <div class = "field">
 	<%= f.label :station, "最寄駅", class: "form-label fw-bold" %>
-	<%= f.text_field :station, autofocus: true,placeholder: "最寄駅を入力してください", class: "form-control" %>
+	<%= f.text_field :station, autofocus: true, placeholder: "最寄駅を入力してください", class: "form-control" %>
 </div>
 <div class = "field">
 	<%= f.label :tel, "電話番号", class: "form-label fw-bold" %>
-	<%= f.text_field :tel, autofocus: true,placeholder: "電話番号を入力してください", class: "form-control" %>
+	<%= f.text_field :tel, autofocus: true, placeholder: "電話番号を入力してください", class: "form-control" %>
 </div>
 <div class="field">
   <%= f.label :homepage, "HP", class: "form-label fw-bold" %>
-  <%= f.text_field :homepage, autofocus: true,placeholder: "HPのリンクを入力してください", class: "form-control" %>
+  <%= f.text_field :homepage, autofocus: true, placeholder: "HPのリンクを入力してください", class: "form-control" %>
 </div>
 <div class = "acition">
 	<%= f.submit "新規登録", class: "btn btn-primary mb-4", data: { turbo: false } %>

@@ -16,8 +16,16 @@
 
 @import "bootstrap";
 
+.navbar {
+  background-color: rgba(255,204,204,0.3);
+  background-blend-mode:lighten;
+}
 body {
 	height: 100%;
+  background-image: image-url('top_image.jpg');
+  background-size: cover;
+  background-color:rgba(255,255,255,0.3);
+  background-blend-mode:lighten;
   }
 
 .container{

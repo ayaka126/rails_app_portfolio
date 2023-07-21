@@ -37,6 +37,10 @@ class FacilitiesController < ApplicationController
     redirect_to facilities_path
   end
 
+  def search
+    @facilities = Facility.search(params[:keyword])
+  end
+
   private
     def set_facility
       @facility = Facility.find(params[:id])

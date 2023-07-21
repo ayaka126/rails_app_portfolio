@@ -1,0 +1,16 @@
+<h2>検索結果</h2>
+
+<table class="table table-hover table-inverse">
+	<tbody>
+		<% @facilities.each do |facility| %>
+			<tr>
+				<td><%= facility.name %></td>
+				<td><%= facility.address %></td>
+				<td><%= facility.station %></td>
+				<td><%= facility.tel %></td>
+				<td><%= link_to "HPはこちら", facility.homepage, target: "_blank" %></td>
+				<td><%= link_to "参照", facility_path(facility) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

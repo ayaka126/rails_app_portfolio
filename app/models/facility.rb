@@ -7,4 +7,12 @@ class Facility < ApplicationRecord
     validates :station, presence: true
     validates :tel, presence: true, uniqueness: true
     validates :homepage, format: /\A#{URI::regexp(%w(http https))}\z/
+
+  def self.search(keyword)
+    if keyword != ""
+      Facility.where('name LIKE(?)', "%#{keyword}%")
+    else
+      Facility.all
+    end
+  end
 end
