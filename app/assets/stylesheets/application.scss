@@ -26,12 +26,18 @@ body {
   background-size: cover;
   background-color:rgba(255,255,255,0.3);
   background-blend-mode:lighten;
+  text-align: center;
   }
 
 .container{
   text-align: center;
   margin: 30px;
+  width: 100%;
   }
+
+.container h1{
+  margin: 15px;
+}
 
 .field {
   width: 100%;
@@ -49,7 +55,7 @@ body {
 }
 
 input{
-  width: 370px;
+  width: 300px;
   padding: 10px 15px;
   font-size: 16px
 }
@@ -71,16 +77,24 @@ input{
 }
 .table{
   text-align: center;
+  margin: 30px;
 }
 table th {
-  background-color: #FFFFCC; padding:10px 20px;
+  background-color:rgba(255,255,221,0.9); padding:10px 20px;
+  text-align: left;
 }
 table td{
-  background-color: #FFFFDD; padding:10px 20px;
+  background-color:rgba(255,255,221,0.7); padding:20px 20px;
+  text-align: left;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }
 
 #map{
-  height: 300px;
-  width: 500px;
+  height: 400px;
+  width: 70%;
 }
 

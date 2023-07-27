@@ -5,6 +5,11 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.all
   end
 
+  def indexbymap
+    @facilities = Facility.all
+    @nearby_facilities = nearby_facilities
+  end
+
   def show
   end
 
@@ -48,5 +53,24 @@ class FacilitiesController < ApplicationController
 
     def facility_params
       params.require(:facility).permit(:name, :address, :station, :tel, :homepage)
+    end
+
+    def nearby_facilities
+      current_location = [latitude, longitude]
+      if current_location.compact.blank?
+        # 現在地情報がない場合のデフォルト位置（赤羽駅）
+        default_location = [35.777615, 139.7209868]
+        Facility.near(default_location, 2, units: :km)
+      else
+        Facility.near(current_location, 2, units: :km)
+      end
+    end
+
+    def latitude
+      params[:latitude].to_f
+    end
+  
+    def longitude
+      params[:longitude].to_f
     end
 end

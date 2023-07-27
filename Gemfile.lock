@@ -103,6 +103,10 @@ GEM
     execjs (2.8.1)
     ffi (1.15.5)
     geocoder (1.8.2)
+    geokit (1.14.0)
+    geokit-rails (2.5.0)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.14.1)
@@ -259,6 +263,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   geocoder
+  geokit-rails
   image_processing (~> 1.2)
   importmap-rails
   jbuilder

@@ -20,5 +20,6 @@ module App
     config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
     config.i18n.default_locale = :ja
+    config.gem 'geokit-rails'
   end
 end
