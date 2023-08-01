@@ -8,6 +8,7 @@ class Facility < ApplicationRecord
     validates :station, presence: true
     validates :tel, presence: true, uniqueness: true
     validates :homepage, format: /\A#{URI::regexp(%w(http https))}\z/
+    validates :opening_hours, presence: true
 
   def self.search(keyword)
     if keyword != ""

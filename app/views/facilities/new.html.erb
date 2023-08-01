@@ -2,7 +2,7 @@
 <%= form_with model: @facility, local: true, class: "mt-4 form-column-width" do |f| %>
 	<%= render "shared/error", object: f.object %>
 <div class="field">
-  <%= f.label :name, "保育園名", class: "form-label fw-bold" %>
+	<%= f.label :name, "保育園名", class: "form-label fw-bold" %>
   <%= f.text_field :name, autofocus: true, placeholder: "保育園名を入力してください", class: "form-control" %>
 </div>
 <div class = "field">
@@ -16,6 +16,10 @@
 <div class = "field">
 	<%= f.label :tel, "電話番号", class: "form-label fw-bold" %>
 	<%= f.text_field :tel, autofocus: true, placeholder: "電話番号を入力してください", class: "form-control" %>
+</div>
+<div class = "field">
+	<%= f.label :opening_hours, "開園時間", class: "form-label fw-bold" %>
+	<%= f.text_field :opening_hours, autofocus: true, placeholder: "開園時間を入力してください", class: "form-control" %>
 </div>
 <div class="field">
   <%= f.label :homepage, "HP", class: "form-label fw-bold" %>

@@ -17,29 +17,39 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="/user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              MENU
-            </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/user">登録情報</a></li>
-            <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <a class="dropdown-item" href="https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html" target="_blank">北区役所HPはこちら</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                MENU
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if current_user %>
+                  <li><a class="dropdown-item" href="/user">登録情報</a></li>
+                  <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
+                <% else %>
+                  <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
+                <% end %>
+                <li><hr class="dropdown-divider"></li>
+                <a class="dropdown-item" href="https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html" target="_blank">北区役所HPはこちら</a>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-    <form class="d-flex">
-      <%= form_with url: search_facilities_path, local: true, method: :get, class: "search-form" do |f| %>
-        <%= f.text_field :keyword, placeholder: "保育園をフリーワードで検索", class: "search-input form-control form-control-sm" %>
-        <%= f.submit "検索", class: "btn btn-outline-primary btn-sm" %>
-      <% end %>
-      <%= link_to "新規登録", new_user_path, class: "btn btn-outline-light btn-sm" %>
-      <%= button_to "ログアウト", logout_path, class: "btn btn-outline-light btn-sm", method: :delete %>
-    </form>
-</nav>
+        </div>
+        <form class="d-flex">
+          <%= form_with url: search_facilities_path, local: true, method: :get do |f| %>
+            <%= f.text_field :keyword, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm" %>
+            <%= f.submit "検索", class: "btn btn-outline-primary btn-sm" %>
+          <% end %>
+          <% if current_user %>
+            <%= button_to "ログアウト", logout_path, class: "btn btn-outline-light btn-sm", method: :delete %>
+          <% else %>
+            <%= link_to "新規登録", new_user_path, class: "btn btn-outline-light btn-sm" %>
+            <%= link_to "ログイン", login_path, class: "btn btn-outline-light btn-sm" %>
+          <% end %>
+        </form>
+      </div>
+    </nav>
     <div class="container">
       <p style="color: green"><%= notice %></p>
       <p style="color: red"><%= alert %></p>

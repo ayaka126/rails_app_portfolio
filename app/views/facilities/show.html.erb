@@ -1,61 +1,73 @@
-<h2><%= @facility.name %></h2>
-<table>
-  <tr>
-    <th>住所</th>
-    <td><%= @facility.address %></td>
-  </tr>
-  <tr>
-    <th>最寄駅</th>
-    <td><%= @facility.station %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @facility.tel %></td>
-  </tr>
-  <tr>
-    <th>HPリンク</th>
-    <td><%= link_to @facility.homepage %></td>
-  </tr>
-  <div id="map"></div>
-<!-- Googleマップ表示用の Javascript -->
-<script>
-  function initMap(){
-    // 地図の位置情報(緯度・経度)を取得
-    let mapPosition = {lat: <%= @facility.latitude %> , lng: <%= @facility.longitude %> };
-    let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: mapPosition
-    });
-    let transitLayer = new google.maps.TransitLayer();
-    transitLayer.setMap(map);
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h2><%= @facility.name %></h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>住所</th>
+            <td><%= @facility.address %></td>
+          </tr>
+          <tr>
+            <th>最寄駅</th>
+            <td><%= @facility.station %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= @facility.tel %></td>
+          </tr>
+          <tr>
+            <th>開園時間（延長含む）</th>
+            <td><%= @facility.opening_hours %></td>
+          </tr>
+          <tr>
+            <th>HPリンク</th>
+            <td>
+              <%= link_to(@facility.homepage, target: "_blank") do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
+                </svg>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if current_user %>
+        <div class="text-center">
+          <%= link_to "投稿一覧を見る", facility_posts_path(@facility), class: "btn btn-warning btn-lg" %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <div id="map" style="height: 400px; width: 100%;"></div>
+      <script>
+        function initMap(){
+          // 地図の位置情報(緯度・経度)を取得
+          let mapPosition = {lat: <%= @facility.latitude %> , lng: <%= @facility.longitude %> };
+          let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: mapPosition
+          });
+          let transitLayer = new google.maps.TransitLayer();
+          transitLayer.setMap(map);
 
-    let contentString = '【住所】<%= @facility.address %>';
-    let infowindow = new google.maps.InfoWindow({
-      content: contentString
-    });
+          let contentString = '【住所】<%= @facility.address %>';
+          let infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
 
-    let marker = new google.maps.Marker({
-      position: mapPosition,
-      map: map,
-      title: contentString
-    });
+          let marker = new google.maps.Marker({
+            position: mapPosition,
+            map: map,
+            title: contentString
+          });
 
-    marker.addListener('click', function(){
-      infowindow.open(map, marker);
-    });
-  }
-  </script>
-  <tr>
-    <th>投稿一覧</th>
-    <td><%=link_to "こちら", facility_posts_path(@facility) %></td>
-  </tr>
-</table>
-<div>
-  <%= link_to "編集", edit_facility_path(@facility) %> |
-  <%= link_to "保育園一覧へ戻る", facilities_path %>
-  <%= button_to "削除", @facility, method: :delete, data: { turbo: false } %>
+          marker.addListener('click', function(){
+            infowindow.open(map, marker);
+          });
+        }
+        </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+    </div>
+  </div>
 </div>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-

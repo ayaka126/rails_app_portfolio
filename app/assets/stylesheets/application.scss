@@ -19,9 +19,11 @@
 .navbar {
   background-color: rgba(255,204,204,0.3);
   background-blend-mode:lighten;
+  height: 70px;
 }
 body {
 	height: 100%;
+  width: 100%;
   background-image: image-url('top_image.jpg');
   background-size: cover;
   background-color:rgba(255,255,255,0.3);
@@ -56,8 +58,13 @@ body {
 
 input{
   width: 300px;
+  height: 50px;
   padding: 10px 15px;
-  font-size: 16px
+  margin: 15px;
+  font-size: 15px
+}
+.containerbox{
+  margin: 60px;
 }
 
 // .form-floating input[type="email"] {
@@ -75,17 +82,34 @@ input{
 .alert li{
   list-style: none;
 }
-.table{
-  text-align: center;
-  margin: 30px;
+/* テーブルのスタイル */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  color: #343a40;
+  margin: 15px;
 }
-table th {
-  background-color:rgba(255,255,221,0.9); padding:10px 20px;
+
+/* テーブルヘッダーのスタイル */
+.table thead th {
+  background-color: #FFF;
+  color: black;
   text-align: left;
+  padding: 15px;
 }
-table td{
-  background-color:rgba(255,255,221,0.7); padding:20px 20px;
+.table tr {
   text-align: left;
+  padding: 15px;
+}
+
+/* テーブル内のリンクのスタイル */
+.table a {
+  color: #444;
+  text-decoration: none;
+}
+.table a:hover {
+  text-decoration: underline;
 }
 
 a{
@@ -93,8 +117,26 @@ a{
   color: black;
 }
 
-#map{
-  height: 400px;
-  width: 70%;
+.box{
+  display: flex;
+  justify-content: space-around;
+  margin: 60px;
+}
+.search{
+  width: 500px;
 }
 
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.map-title {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+h3.text-center {
+  margin-bottom: 60px;
+}
