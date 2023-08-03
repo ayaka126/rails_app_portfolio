@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    ActiveStorage::Current.url_options = Rails.application.config.action_mailer.default_url_options
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
   end

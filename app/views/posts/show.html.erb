@@ -8,8 +8,8 @@
 <% end %>
 <% @comments.each do |comment| %>
 	<div class="col-3 text-center">
-		<% if comment.user.userimage.present? %>
-			<%= image_tag comment.user.userimage.url, alt: "アイコン" %>
+		<% if comment.user.userimage.attached? %>
+			<%= image_tag comment.user.userimage.url, alt: "アイコン", size: "50x50" %>
 		<% else %>
 			<%= image_tag "default_userimage.png", alt: "アイコン", size: "50x50" %>
 		<% end %>		
