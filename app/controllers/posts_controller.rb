@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post = @user.posts.build(post_params)
     @post.facility = @facility
     if @post.save
-      redirect_to @facility, notice: "投稿が作成されました"
+      redirect_to facility_posts_path, notice: "投稿が作成されました"
     else
       render :new,alert: "投稿できませんでした", status: :unprocessable_entity
     end

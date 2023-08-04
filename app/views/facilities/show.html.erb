@@ -32,11 +32,18 @@
           </tr>
         </tbody>
       </table>
-      <% if current_user %>
-        <div class="text-center">
+      <div class="back">
+        <%= link_to "戻る", :back %>
+      </div>
+      <div class="text-center">
+        <% if current_user %>
           <%= link_to "投稿一覧を見る", facility_posts_path(@facility), class: "btn btn-warning btn-lg" %>
-        </div>
-      <% end %>
+        <% else %>
+          <p>＼ログインすると投稿一覧が見られます／</p>
+          <%= link_to "> 新規登録がまだの方", new_user_path, class: "btn btn-light ms-3" %>
+          <%= link_to "> ログインする", login_path, class: "btn btn-light ms-3" %>
+        <% end %>
+      </div>
     </div>
     <div class="col-md-4">
       <div id="map" style="height: 400px; width: 100%;"></div>
