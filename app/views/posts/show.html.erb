@@ -1,25 +1,68 @@
-<h2><%= @post.title %></h2>
-<p><%= @post.content %></p>
-<%= form_with model: [@post, @comment], url: facility_post_comments_path(@facility, @post), local: true do |f| %>
-	<%= f.text_area :content, rows:'5',placeholder: "コメントをご記入ください", class:"form-control mt-3"  %>
-	<div class="text-right">
-		<%= f.submit "コメントする", class: "btn btn-primary mt-3 mb-3" %>
-	</div>
-<% end %>
-<% @comments.each do |comment| %>
-	<div class="col-3 text-center">
-		<% if comment.user.userimage.attached? %>
-			<%= image_tag comment.user.userimage.url, alt: "アイコン", size: "50x50" %>
-		<% else %>
-			<%= image_tag "default_userimage.png", alt: "アイコン", size: "50x50" %>
-		<% end %>		
-		<%= comment.user.username %>
-		<%= comment.created_at.strftime('%Y/%m/%d %H:%M')%>
-		<p><%= comment.content %></p>
-		<% if comment.user_id == current_user.id %>
-			<%= button_to "削除", facility_post_comment_path(comment.post.facility.id, comment.post.id, comment.id), method: :delete, class: "btn-sm btn-danger" %></td>
-		<% end %>
-	</div>
-<% end %>
-<div><%= link_to "←投稿一覧へ戻る", facility_posts_path, class: "float-start"%></div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+			<div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+						<% if @post.user.userimage.attached? %>
+							<%= image_tag @post.user.userimage.url, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+						<% else %>
+							<%= image_tag "default_userimage.png", alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+						<% end %>
+						<h6 class="mb-0"><%= @post.user.username %></h6>
+						<small>(<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>)</small>
+					</div>
+					<% if @post.user_id == current_user.id %>
+						<%= button_to "削除", facility_post_path(@facility, @post), method: :delete, class: "btn btn-sm btn-danger me-3" %>
+					<% end %>
+				</div>
 
+				<div class="card-body text-left">
+					<h5 class="card-text"><%= @post.content %></h5>
+				</div>
+			</div>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-8">
+      <%= form_with model: [@post, @comment], url: facility_post_comments_path(@facility, @post), local: true do |f| %>
+        <%= f.text_area :content, rows: '5', placeholder: "コメントをご記入ください", class: "form-control" %>
+        <div class="text-right mt-3">
+          <%= f.submit "コメントする", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row justify-content-center mt-3">
+    <div class="col-lg-8">
+      <% @comments.each do |comment| %>
+        <div class="card mb-3">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+              <% if comment.user.userimage.attached? %>
+                <%= image_tag comment.user.userimage.url, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+              <% else %>
+                <%= image_tag "default_userimage.png", alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+              <% end %>		
+              <h6 class="mb-0"><%= comment.user.username %></h6>
+              <small>(<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>)</small>
+            </div>
+            <% if comment.user_id == current_user.id %>
+              <%= button_to "削除", facility_post_comment_path(comment.post.facility.id, comment.post.id, comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-text"><%= comment.content %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <%= link_to "←投稿一覧へ戻る", facility_posts_path, class: "btn btn-light float-start mt-3" %>
+    </div>
+  </div>
+</div>

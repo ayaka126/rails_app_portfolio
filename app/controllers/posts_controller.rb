@@ -27,6 +27,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to facility_posts_path, notice: "投稿が削除されました"
+    else
+      redirect_to facility_post_path(@facility, @post), alert: "投稿の削除に失敗しました"
+    end
+  end
+
   private
   def post_params
     params.require(:post).permit(:title, :content)

@@ -1,16 +1,21 @@
-<h1>質問・相談・交流などなんでも</h1>
-<%= form_with(model: [@facility, @post], local: true) do |f| %>
-	<%= render "shared/error", object: f.object %>
-	<div class="field">
-		<%= f.label :title, "タイトル" %>
-		<%= f.text_field :title %>
+<div class="row justify-content-center">
+	<div class="col-md-8">
+		<h1 class="font-weight-normal mt-3">質問・相談・交流などなんでもお気軽に♪</h1>
+		<%= form_with(model: [@facility, @post], local: true) do |f| %>
+			<%= render "shared/error", object: f.object %>
+			<div class="field">
+				<%= f.label :title, "タイトル", class: "form-label" %>
+				<%= f.text_field :title, class: "form-control" %>
+			</div>
+			<div class ="field">
+				<%= f.label :content, "内容", class: "form-label" %>
+				<%= f.text_area :content, rows: 7, class: "form-control" %>
+			</div>
+			<%= f.submit "投稿する", class: "btn btn-primary" %>
+		<% end %>
 	</div>
-	<div class = "field">
-		<%= f.label :content, "内容" %>
-		<%= f.text_area :content, rows: 30, cols: 30 %>
-	</div>
-	<div class = "acition">
-		<%= f.submit "投稿する" %>
-	</div>
-	<%= link_to "投稿一覧へ戻る", facility_posts_path %>
-<% end %>
+</div>
+<div>
+	<%= link_to "←投稿一覧へ戻る", facility_posts_path, class: "float-start"%>
+</div>
+

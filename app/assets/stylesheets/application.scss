@@ -52,9 +52,20 @@ h1{
 
 .field {
   width: 100%;
-  max-width: 370px;
   padding: 10px;
   margin: auto;
+}
+
+.form-label{
+  font-size: 20px;
+}
+
+.form-field{
+  width: 600px;
+}
+
+.field .form-control {
+  width: 100%; /* フォームコントロールを幅100%に調整 */
 }
 
 .form-check {

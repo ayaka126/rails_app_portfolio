@@ -32,10 +32,10 @@
           </tr>
         </tbody>
       </table>
-      <div class="back">
-        <%= link_to "戻る", :back %>
-      </div>
       <div class="text-center">
+      <div class="col-lg-8">
+        <%= link_to "←戻る", :back, class: "btn btn-light float-start mt-3" %>
+      </div>
         <% if current_user %>
           <%= link_to "投稿一覧を見る", facility_posts_path(@facility), class: "btn btn-warning btn-lg" %>
         <% else %>
