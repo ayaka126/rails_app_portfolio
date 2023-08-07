@@ -17,4 +17,8 @@ class Facility < ApplicationRecord
       Facility.all
     end
   end
+
+  def self.search_by_area(area_name)
+    Facility.where('address LIKE ?', "%#{area_name}%")
+  end
 end

@@ -46,6 +46,12 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.search(params[:keyword])
   end
 
+  def search_by_area
+    @area_name = params[:area_name]
+    @facilities = Facility.search_by_area(@area_name)
+    render 'search'
+  end
+
   private
     def set_facility
       @facility = Facility.find(params[:id])

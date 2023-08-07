@@ -125,10 +125,10 @@ a{
 .box{
   display: flex;
   justify-content: space-around;
-  margin: 60px;
+  margin: 50px;
 }
 .search{
-  width: 500px;
+  width: 400px;
 }
 
 .map-container {
@@ -137,19 +137,17 @@ a{
   align-items: center;
 }
 
-.map-title {
-  padding: 10px;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
-
 h3.text-center {
   margin-bottom: 15px;
-  margin-top: 15px;
+  margin-top: 25px;
   font-weight: bold;
 }
 .search-title{
   font-weight: bold;
+}
+
+.btn-group-vertical{
+  width: 100%;
 }
 
 .back{

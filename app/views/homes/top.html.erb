@@ -2,19 +2,43 @@
 	<h1 class="text-center mt-4">東京都北区の保育園 パパ・ママ交流スペース</h1>
 	<p>ここは保育園在園中の方や保活中の方と気軽に交流できる場所です！</p>
 	<p>ログインして、気になる保育園のことを聞いたり、情報交換をしましょう♪</p>
+	<hr>
 	<h3 class="text-center"><span style="font-weight: bold;">＼気になる保育園を探す／</span></h3>
 	<div class= "box mt-4">
+	<div class="col-md-4">
 		<div class= "search">
-			<h5 class="search-title">フリーワードで検索する</h5>
+			<h5 class="search-title">保育園名で検索する</h5>
 			<%= form_with url: search_facilities_path, local: true, method: :get, class: "search-form" do |f| %>
 				<%= f.text_field :keyword, placeholder: "保育園を検索", class: "search-input" %><br>
 				<%= f.submit "検索", class: "btn btn-warning" %>
 			<% end %>
 		</div>
-		<div class="map-container">
-			<h5 class="map-title">現在地に近い保育園を見つける</h5>
-			<div id="map" style="width: 500px; height: 400px;"></div>
 		</div>
+		<div class="col-md-4">
+		<div class="map-container">
+			<h5 class="search-title">現在地に近い保育園を見つける</h5>
+			<div id="map" style="width: 350px; height: 350px;"></div>
+		</div>
+		</div>
+		<div class="col-md-4">
+		<div class="search">
+			<h5 class="search-title">エリアで探す</h5>
+			<div class="btn-group-vertical">
+				<%= link_to '赤羽エリア', search_by_area_facilities_path(area_name: '赤羽'), class: 'btn btn-warning btn-block' %>
+				<%= link_to '志茂エリア', search_by_area_facilities_path(area_name: '志茂'), class: 'btn btn-light  btn-block' %>
+				<%= link_to '王子エリア', search_by_area_facilities_path(area_name: '王子'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '西が丘エリア', search_by_area_facilities_path(area_name: '西が丘'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '神谷エリア', search_by_area_facilities_path(area_name: '神谷'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '滝野川エリア', search_by_area_facilities_path(area_name: '滝野川'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '田端エリア', search_by_area_facilities_path(area_name: '田端'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '浮間エリア', search_by_area_facilities_path(area_name: '浮間'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '豊島エリア', search_by_area_facilities_path(area_name: '豊島'), class: 'btn btn-warning  btn-block' %>
+				<%= link_to '上中里エリア', search_by_area_facilities_path(area_name: '上中里'), class: 'btn btn-warning btn-block' %>
+			</div>
+		</div>
+		</div>
+		
+</div>
 	</div>
 </div>
 <script>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :facilities do
     collection do
       get 'search'
+      get 'search_by_area'
     end
     resources :posts do
       resources :comments, only: [:create, :destroy]
