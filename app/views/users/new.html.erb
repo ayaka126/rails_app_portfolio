@@ -1,3 +1,6 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
 <h1>新規登録</h1>
 <%= form_with model: @user, url: user_path, local: true do |f| %>
 	<%= render "shared/error", object: f.object %>
@@ -11,11 +14,15 @@
 </div>
 <div class = "field">
 	<%= f.label :password, "パスワード", class: "form-label fw-bold" %>
-	<%= f.password_field :password, autofocus: true, placeholder: "パスワードを入力してください", class: "form-control" %>
+	<%= f.password_field :password, autofocus: true, placeholder: "英語と数字を使用した6文字以上のパスワードを入力してください", class: "form-control" %>
 </div>
 <div class = "field">
 	<%= f.label :password_confirmation, "パスワード（確認用）", class: "form-label fw-bold" %>
 	<%= f.password_field :password_confirmeation, autofocus: true, placeholder: "パスワードをもう一度入力してください", class: "form-control" %>
+</div>
+<div class = "field">
+	<%= f.label :introduction, "自己紹介文", class: "form-label fw-bold" %>
+	<%= f.text_field :introduction, autofocus: true, placeholder: "簡単な自己紹介文を入力してください（任意）", class: "form-control" %>
 </div>
 <div class="field">
   <%= f.label :userimage, "アイコン画像" , class: "form-label fw-bold"%>
@@ -26,3 +33,7 @@
 </div>
 <%= link_to "ログインはこちら", login_path %>
 <% end %>
+</div>
+</div>
+</div>
+

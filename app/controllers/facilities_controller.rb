@@ -25,7 +25,7 @@ class FacilitiesController < ApplicationController
     if @facility.save
       redirect_to facility_path(@facility), notice: "新規登録が完了しました"
     else
-      redirect_to :new, status: :unprocessable_entity
+      render new_facility_path, status: :unprocessable_entity
     end
   end
 

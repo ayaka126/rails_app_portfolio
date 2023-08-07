@@ -27,7 +27,9 @@
   <div class="row justify-content-center mt-3">
     <div class="col-lg-8">
       <%= form_with model: [@post, @comment], url: facility_post_comments_path(@facility, @post), local: true do |f| %>
-        <%= f.text_area :content, rows: '5', placeholder: "コメントをご記入ください", class: "form-control" %>
+        <div class="form-group">
+          <%= f.text_area :content, rows: '5', placeholder: "2文字以上コメントをご記入ください", class: "form-control" %>
+        </div>
         <div class="text-right mt-3">
           <%= f.submit "コメントする", class: "btn btn-primary" %>
         </div>
@@ -37,26 +39,30 @@
   
   <div class="row justify-content-center mt-3">
     <div class="col-lg-8">
-      <% @comments.each do |comment| %>
-        <div class="card mb-3">
-          <div class="card-header d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-              <% if comment.user.userimage.attached? %>
-                <%= image_tag comment.user.userimage.url, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
-              <% else %>
-                <%= image_tag "default_userimage.png", alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
-              <% end %>		
-              <h6 class="mb-0"><%= comment.user.username %></h6>
-              <small>(<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>)</small>
+      <% if @comments.present? %>
+        <% @comments.each do |comment| %>
+          <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <% if comment.user.userimage.attached? %>
+                  <%= image_tag comment.user.userimage.url, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+                <% else %>
+                  <%= image_tag "default_userimage.png", alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+                <% end %>		
+                <h6 class="mb-0"><%= comment.user.username %></h6>
+                <small>(<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>)</small>
+              </div>
+              <% if comment.user_id == current_user.id %>
+                <%= button_to "削除", facility_post_comment_path(comment.post.facility.id, comment.post.id, comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
+              <% end %>
             </div>
-            <% if comment.user_id == current_user.id %>
-              <%= button_to "削除", facility_post_comment_path(comment.post.facility.id, comment.post.id, comment.id), method: :delete, class: "btn btn-sm btn-danger" %>
-            <% end %>
+            <div class="card-body">
+              <h5 class="card-text"><%= comment.content %></h5>
+            </div>
           </div>
-          <div class="card-body">
-            <h5 class="card-text"><%= comment.content %></h5>
-          </div>
-        </div>
+        <% end %>
+      <% else %>
+        <h5>コメントはまだありません</h5>
       <% end %>
     </div>
   </div>

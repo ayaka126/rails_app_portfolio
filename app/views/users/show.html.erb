@@ -1,7 +1,32 @@
-<h1><%= current_user.username %>様のマイページ</h1>
-<%= link_to "編集", edit_user_path %>
-<% if current_user.userimage.attached? %>
-	<%= image_tag current_user.userimage.variant(resize_to_limit: [200, 200]) %>
-<% end %>
-<%= button_to "このアカウントを削除する", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+			<h2>マイページ</h2>
+      <div class="card">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <% if current_user.userimage.attached? %>
+              <%= image_tag current_user.userimage.variant(resize_to_limit: [70, 70]), class: "img-fluid rounded-circle mb-3" %>
+            <% else %>
+              <%= image_tag "default_userimage.png", alt: "デフォルトアイコン", class: "img-fluid rounded-circle mb-3", size: "70x70" %>
+            <% end %>
+            <h4><%= current_user.username %></h4>
+					</div>
+					<hr>
+					<div class="d-flex align-items-center mb-3" style="padding-left: 20px;">
+						<% if current_user.introduction.present? %>
+							<p><%= current_user.introduction %></p>
+						<% else %>
+							<p>自己紹介文はまだありません</p>
+						<% end %>
+					</div>
+					<hr>
+					<div class="d-flex align-items-center justify-content-center mb-3">
+						<%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-light" %>
+						<%= button_to "アカウントを削除", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+					</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

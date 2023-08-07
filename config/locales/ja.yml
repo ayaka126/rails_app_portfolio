@@ -11,14 +11,16 @@ ja:
         email: メールアドレス
         password: パスワード
         userimage: アイコン画像
+        introduction: 自己紹介
       facility:
         name: 保育園名
         address: 住所
         station: 最寄駅
         tel: 電話番号
         homepage: HP
+        opening_hours: 開園時間
       post:
         title: タイトル
-        content: 内容
+        content: 投稿内容
       comment:
-        content: 内容
+        content: コメント内容

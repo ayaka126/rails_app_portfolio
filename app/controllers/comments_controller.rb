@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to facility_post_path(@post.facility, @post), notice: "コメントが投稿されました"
     else
-      render :facility_post, status: :unprocessable_entity
+      redirect_to facility_post_path(@post.facility, @post), alert: "コメントの投稿に失敗しました", status: :unprocessable_entity
     end
   end
 
