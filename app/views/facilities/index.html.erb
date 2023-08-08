@@ -17,10 +17,10 @@
         <% @facilities.each do |facility| %>
           <tr>
             <td><%= link_to facility.name, facility_path(facility), style: "font-weight: bold;" %></td>
-            <td><%= facility.address %></td>
-            <td><%= facility.station %></td>
+            <td><%= truncate(facility.address, length: 15) %></td>
+            <td><%= truncate(facility.station, length: 15) %></td>
             <td><%= facility.tel %></td>
-            <td><%= facility.opening_hours %></td>
+            <td><%= truncate(facility.opening_hours, length: 15) %></td>
             <td>
               <%= link_to(facility.homepage, target: "_blank") do %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
