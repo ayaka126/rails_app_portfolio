@@ -5,65 +5,63 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
   </head>
-
   <body>
-  <div class="fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-            <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-          </svg> HOME</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="/user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                MENU
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% if current_user %>
-                  <li><a class="dropdown-item" href="/user">マイページ</a></li>
-                  <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
-                <% else %>
-                  <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
-                <% end %>
-                <li><hr class="dropdown-divider"></li>
-                <a class="dropdown-item" href="https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html" target="_blank">北区役所HPはこちら</a>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="d-flex align-items-center">
-          <%= form_tag(search_facilities_path, method: :get, class: "d-flex") do %>
-            <%= text_field_tag :keyword, nil, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm" %>
-            <%= submit_tag "検索", class: "btn btn-outline-warning btn-sm" %>
-          <% end %>
-          <ul class="navbar-nav ml-2">
-          <% if current_user %>
-          <li class="nav-item">
-              <%= button_to "ログアウト", logout_path, class: "btn btn-outline-light btn-sm", method: :delete %>
-            </li>
+    <div class="fixed-top">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+            </svg> HOME</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="/user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  MENU
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <% if current_user %>
+                    <li><a class="dropdown-item" href="/user">マイページ</a></li>
+                    <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
+                  <% else %>
+                    <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
+                  <% end %>
+                  <li><hr class="dropdown-divider"></li>
+                  <a class="dropdown-item" href="https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html" target="_blank">北区役所HPはこちら</a>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="d-flex align-items-center">
+            <%= form_tag(search_facilities_path, method: :get, class: "d-flex") do %>
+              <%= text_field_tag :keyword, nil, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm" %>
+              <%= submit_tag "検索", class: "btn btn-outline-warning btn-sm" %>
+            <% end %>
+            <ul class="navbar-nav ml-2">
+            <% if current_user %>
+              <li class="nav-item">
+                  <%= button_to "ログアウト", logout_path, class: "btn btn-outline-light btn-sm", method: :delete %>
+              </li>
             <% else %>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_user_path, class: "btn btn-outline-light btn-sm" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", login_path, class: "btn btn-outline-light btn-sm" %>
-            </li>
-          <% end %>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_path, class: "btn btn-outline-light btn-sm" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログイン", login_path, class: "btn btn-outline-light btn-sm" %>
+              </li>
+            <% end %>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     </div>
     <div class="container">
       <p style="color: green"><%= notice %></p>

@@ -2,6 +2,10 @@ class UsersController < ApplicationController
   before_action :already_login?, only: [:new, :create]
   before_action :login?, only: :show
 
+  def show
+    @user = User.find(session[:user_id])
+  end
+
   def new
     @user = User.new
   end
@@ -14,10 +18,6 @@ class UsersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @user = User.find(session[:user_id])
   end
 
   def edit
