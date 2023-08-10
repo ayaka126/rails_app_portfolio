@@ -6,11 +6,11 @@ require:
 
 AllCops:
   SuggestExtensions: false
-  # 最新のルールを適用する
+
   NewCops: enable
-  # 何のルールに引っかかったか表示する
+
   DisplayCopNames: true
-  # rubocop対象外(リポジトリ毎で調節)
+
   Exclude:
     - "Gemfile"
     - "bin/**/*"

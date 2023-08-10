@@ -10,6 +10,7 @@ ja:
         username: お名前
         email: メールアドレス
         password: パスワード
+        password_confirmation: 確認用パスワード
         userimage: アイコン画像
         introduction: 自己紹介
       facility:
@@ -24,3 +25,6 @@ ja:
         content: 投稿内容
       comment:
         content: コメント内容
+    errors:
+      messages:
+      wrong_password_confirmation: "パスワードが一致していません"
