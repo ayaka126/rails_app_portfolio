@@ -26,9 +26,9 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:email]).to include("を入力してください")
     end
-
+    
     it 'emailが不正な値だと登録できないこと' do
-      user = build(:user, email:  'test@test' )
+      user = build(:user, email: 'test@test')
       user.valid?
       expect(user.errors[:email]).to include("は不正な値です")
     end

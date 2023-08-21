@@ -22,7 +22,7 @@ AllCops:
     - "config/environments/*"
     - "config/puma.rb"
     - "config/initializers/*"
-    - "spec/*"
+    - "spec/**/*"
     - "spec/factories/*"
 
 Metrics:
