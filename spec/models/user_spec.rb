@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   context '有効な場合' do
     it 'username,email,password,password_confirmationが正しく入力されていれば有効であること' do
-      user = build(:user)
+      user = create(:user)
       expect(user).to be_valid
     end
   end
