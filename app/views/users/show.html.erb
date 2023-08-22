@@ -28,7 +28,7 @@
         </div>
       </div>
       <div class="user-posts mt-4">
-        <h4>あなたの投稿一覧</h4>
+        <h3>あなたの投稿一覧</h3>
         <% if @user_posts.any? %>
           <div class="table-responsive">
             <table class="table table-striped">
@@ -43,8 +43,8 @@
               <tbody>
                 <% @user_posts.each do |post| %>
                   <tr>
-                    <td><%= post.facility.name %></td>
-                    <td><%= post.title %></td>
+                    <td><%= link_to post.facility.name, facility_path(post.facility) %></td>
+                    <td><%= truncate(post.title, length: 13) %></td>
                     <td><%= link_to "コメントを見る（#{post.comments.count}）", facility_post_path(post.facility, post) %></td>
                     <td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
                   </tr>
