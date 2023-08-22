@@ -24,7 +24,7 @@ RSpec.describe Facility, type: :model do
       end
 
       it 'nameが4文字未満だと登録できないこと' do
-        facility = build(:facility, name:'abc')
+        facility = build(:facility, name: 'abc')
         facility.valid?
         expect(facility.errors[:name]).to include("は4文字以上で入力してください")
       end

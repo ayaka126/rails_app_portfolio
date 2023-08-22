@@ -1,32 +1,32 @@
 <div class="container mt-5">
 	<h1 class="text-center mb-4"><%= @facility.name %></h1>
 	<% if @posts.present? %>
-	<div class="table-responsive">
-    <table class="table table-striped">
-			<thead>
-				<tr>
-					<th>タイトル</th>
-					<th>内容</th>
-					<th>詳細</th>
-					<th>投稿日</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @facility.posts.each do |post| %>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						<td><%= truncate(post.title, length: 13) %></td>
-						<td><%= truncate(post.content, length: 30) %></td>
-						<td><%= link_to "コメントを見る（#{post.comments.count}）", facility_post_path(@facility ,post) %>
-						<td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+						<th>タイトル</th>
+						<th>内容</th>
+						<th>詳細</th>
+						<th>投稿日</th>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
+				</thead>
+				<tbody>
+					<% @facility.posts.each do |post| %>
+						<tr>
+							<td><%= truncate(post.title, length: 13) %></td>
+							<td><%= truncate(post.content, length: 30) %></td>
+							<td><%= link_to "コメントを見る（#{post.comments.count}）", facility_post_path(@facility ,post) %>
+							<td><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	<% else %>
-	<div>
-		<h5>投稿はまだありません</h5>
-	</div>
+		<div>
+			<h5>投稿はまだありません</h5>
+		</div>
 	<% end %>
 	<%= link_to "新規投稿する",new_facility_post_path, class: "btn btn-warning" %>
 	<%= link_to "←施設一覧へ戻る", facilities_path, class: "float-start"%>
