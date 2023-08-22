@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    @user_posts = @user.posts
   end
 
   def new
