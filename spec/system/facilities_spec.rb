@@ -58,7 +58,6 @@ RSpec.describe "Facilities", type: :system do
     end
   end
   describe "保育園詳細ページ" do
-
     context 'ログアウトしている場合' do
       before do
         visit facilities_path
@@ -129,7 +128,7 @@ RSpec.describe "Facilities", type: :system do
         end
         visit facility_path(facility)
       end
-      
+
       it '投稿一覧を見るボタンが表示されること' do
       expect(page).to have_content "投稿一覧を見る"
       end
