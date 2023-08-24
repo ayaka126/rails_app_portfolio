@@ -14,21 +14,13 @@ RSpec.describe "Top page", type: :system do
         expect(current_path).to eq root_path
       end
 
-      it 'MENUを押下するとドロップダウンが表示されること' do
-        click_on "MENU"
-        expect(page).to have_content "保育園一覧"
-        expect(page).to have_content "北区役所HPはこちら"
-      end
-
       it '保育園一覧へのリンクを押下すると保育園一覧ページへ遷移すること' do
-        click_on "MENU"
         click_on "保育園一覧"
         expect(current_path).to eq facilities_path
       end
 
-      it '北区役所HPはこちらを押下すると北区役所のホームページへ遷移すること' do
-        click_on "MENU"
-        expect(page).to have_link("北区役所HPはこちら", href: "https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html", target: "_blank")
+      it '北区役所HPを押下すると北区役所のホームページへ遷移すること' do
+        expect(page).to have_link("北区役所HP", href: "https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html", target: "_blank")
       end
 
       it '検索フォームが表示されていること' do
@@ -50,8 +42,7 @@ RSpec.describe "Top page", type: :system do
         visit root_path
       end
 
-      it 'ドロップダウンの中にマイページへのリンクが表示されること' do
-        click_on "MENU"
+      it 'マイページへのリンクが表示されること' do
         expect(page).to have_content "マイページ"
       end
 
@@ -82,18 +73,18 @@ RSpec.describe "Top page", type: :system do
     end
 
     it 'エリア別検索ボタンが表示されていること' do
-      expect(page).to have_link "赤羽エリア"
-      expect(page).to have_link "志茂エリア"
-      expect(page).to have_link "王子エリア"
-      expect(page).to have_link "西が丘エリア"
-      expect(page).to have_link "神谷エリア"
-      expect(page).to have_link "滝野川エリア"
-      expect(page).to have_link "田端エリア"
-      expect(page).to have_link "浮間エリア"
-      expect(page).to have_link "豊島エリア"
-      expect(page).to have_link "上中里エリア"
-      expect(page).to have_link "十条エリア"
-      expect(page).to have_link "堀船エリア"
+      expect(page).to have_link "赤羽"
+      expect(page).to have_link "志茂"
+      expect(page).to have_link "王子"
+      expect(page).to have_link "西が丘"
+      expect(page).to have_link "神谷"
+      expect(page).to have_link "滝野川"
+      expect(page).to have_link "田端"
+      expect(page).to have_link "浮間"
+      expect(page).to have_link "豊島"
+      expect(page).to have_link "上中里"
+      expect(page).to have_link "十条"
+      expect(page).to have_link "堀船"
     end
   end
 end

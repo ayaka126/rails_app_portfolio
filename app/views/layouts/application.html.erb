@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>北区の保育園.com</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -22,44 +22,38 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="/user" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  MENU
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/facilities">
+                  保育園一覧
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <% if current_user %>
-                    <li><a class="dropdown-item" href="/user">マイページ</a></li>
-                    <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
-                  <% else %>
-                    <li><a class="dropdown-item" href="/facilities">保育園一覧</a></li>
-                  <% end %>
-                  <li><hr class="dropdown-divider"></li>
-                  <a class="dropdown-item" href="https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html" target="_blank">北区役所HPはこちら</a>
-                </ul>
+                <% if current_user %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/user">マイページ</a>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete } %>
+                  </li>
+                <% else %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">ログイン</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/user/new">新規登録</a>
+                  </li>
+                <% end %>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.city.kita.tokyo.jp/k-hoiku/kosodate/hoikuen/hoikuen/moshikomi/index.html" target="_blank">北区役所HP</a>
+                </li>
               </li>
             </ul>
-          </div>
-          <div class="d-flex align-items-center">
-            <%= form_tag(search_facilities_path, method: :get, class: "d-flex") do %>
-              <%= text_field_tag :keyword, nil, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm" %>
-              <%= submit_tag "検索", class: "btn btn-outline-warning btn-sm" %>
-            <% end %>
-            <ul class="navbar-nav ml-2">
-              <% if current_user %>
-                <li class="nav-item">
-                    <%= button_to "ログアウト", logout_path, class: "btn btn-outline-light btn-sm", method: :delete %>
-                </li>
-              <% else %>
-                <li class="nav-item">
-                  <%= link_to "新規登録", new_user_path, class: "btn btn-outline-light btn-sm" %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to "ログイン", login_path, class: "btn btn-outline-light btn-sm" %>
-                </li>
+            <div class="d-flex align-items-center">
+              <%= form_tag(search_facilities_path, method: :get, class: "d-flex") do %>
+                <%= text_field_tag :keyword, nil, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm" %>
+                <%= submit_tag "検索", class: "btn btn-outline-warning btn-sm" %>
               <% end %>
-            </ul>
+            </div>
           </div>
         </div>
       </nav>

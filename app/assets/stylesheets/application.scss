@@ -128,13 +128,17 @@ a{
   margin: 50px;
 }
 .search{
-  width: 400px;
+  width: 80%;
 }
 
 .map-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.area-search {
+  width: 80%;
 }
 
 h3.text-center {
