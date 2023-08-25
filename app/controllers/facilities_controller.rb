@@ -5,11 +5,6 @@ class FacilitiesController < ApplicationController
     @facilities = Facility.all
   end
 
-  def indexbymap
-    @facilities = Facility.all
-    @nearby_facilities = nearby_facilities
-  end
-
   def show
   end
 
