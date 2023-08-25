@@ -103,10 +103,14 @@
 
 								//　保育園の場所のマーカーを表示する
 								<% @facilities.each do |facility| %>
-									new google.maps.Marker({
-											position: { lat: <%= facility.latitude %>, lng: <%= facility.longitude %> },
-											map: map,
-											title: '<%= facility.name %>'
+									let facilityMarker_<%= facility.id %> = new google.maps.Marker({
+										position: { lat: <%= facility.latitude %>, lng: <%= facility.longitude %> },
+										map: map,
+										title: '<%= facility.name %>'
+									});
+
+									facilityMarker_<%= facility.id %>.addListener('click', function() {
+										window.location.href = '<%= facility_path(facility) %>';
 									});
 								<% end %>
 							},
