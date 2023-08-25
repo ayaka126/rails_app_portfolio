@@ -30,8 +30,10 @@ body {
   background-size: cover;
   background-color:rgba(255,255,255,0.3);
   background-blend-mode:lighten;
+  background-attachment: fixed;
   text-align: center;
   padding-top: 80px;
+  padding-bottom: 30px;
   }
 
 h1{
@@ -41,7 +43,6 @@ h1{
 
 .container{
   text-align: center;
-  margin: 30px;
   width: 100%;
   }
 
@@ -128,27 +129,28 @@ a{
   margin: 50px;
 }
 .search{
-  width: 80%;
+  width: 100%;
 }
 
 .map-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .area-search {
-  width: 80%;
+  width: 100%;
 }
 
 h3.text-center {
-  margin-bottom: 15px;
-  margin-top: 25px;
+  margin-top: 30px;
   font-weight: bold;
 }
 .search-title{
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 30px;
 }
 
 .back{

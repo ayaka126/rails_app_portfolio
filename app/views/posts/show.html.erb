@@ -7,7 +7,7 @@
           <div class="card-header d-flex justify-content-between align-items-center">
             <div class="d-flex align-items-center">
               <% if @post.user.userimage.attached? %>
-                <%= image_tag @post.user.userimage.url, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+                <%= image_tag @post.user.userimage, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
               <% else %>
                 <%= image_tag "default_userimage.png", alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
               <% end %>
@@ -46,7 +46,7 @@
               <div class="card-header d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center">
                   <% if comment.user.userimage.attached? %>
-                    <%= image_tag comment.user.userimage.url, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
+                    <%= image_tag comment.user.userimage, alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
                   <% else %>
                     <%= image_tag "default_userimage.png", alt: "アイコン", class: "rounded-circle me-3", size: "40x40" %>
                   <% end %>		
