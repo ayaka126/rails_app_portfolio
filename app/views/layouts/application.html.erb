@@ -30,17 +30,20 @@
                 </a>
                 <% if current_user %>
                   <li class="nav-item">
-                    <a class="nav-link" href="/user">マイページ</a>
+                    <%= link_to "マイページ", user_path, class: "nav-link" %>
                   </li>
                   <li class="nav-item">
                     <%= link_to "ログアウト", logout_path, class: "nav-link", data: { turbo_method: :delete } %>
                   </li>
                 <% else %>
                   <li class="nav-item">
-                    <a class="nav-link" href="/login">ログイン</a>
+                    <%= link_to "ログイン", login_path, class: "nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/user/new">新規登録</a>
+                    <%= link_to "新規登録", new_user_path, class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ゲストログイン", guest_login_path, class: "nav-link", data: { turbo_method: :post } %>
                   </li>
                 <% end %>
                 <li class="nav-item">
