@@ -23,6 +23,11 @@
   background-blend-mode:lighten;
   height: 70px;
 }
+
+.navbar-collapse.show {
+  background-color: #f8f9fa;
+}
+
 body {
 	height: 100%;
   width: 100%;
