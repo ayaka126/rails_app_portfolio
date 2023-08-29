@@ -12,7 +12,7 @@
 						<h5 class="search-title">保育園名で検索する</h5>
 						<%= form_with url: search_facilities_path, local: true, method: :get, class: "search-form" do |f| %>
 							<%= f.text_field :keyword, placeholder: "保育園を検索", class: "search-input" %><br>
-							<%= f.submit "検索", class: "btn btn-warning" %>
+							<%= f.submit "検索", class: "btn btn-warning mt-4" %>
 						<% end %>
 					</div>
 				</div>

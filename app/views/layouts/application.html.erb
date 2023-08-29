@@ -51,9 +51,9 @@
                 </li>
               </li>
             </ul>
-            <div class="d-flex align-items-center">
+            <div class="header-search d-flex justify-content-center">
               <%= form_tag(search_facilities_path, method: :get, class: "d-flex me-2") do %>
-                <%= text_field_tag :keyword, nil, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm" %>
+                <%= text_field_tag :keyword, nil, placeholder: "保育園をフリーワードで検索", class: "form-control form-control-sm me-2" %>
                 <%= submit_tag "検索", class: "btn btn-light btn-sm" %>
               <% end %>
             </div>

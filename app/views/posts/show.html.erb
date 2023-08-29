@@ -15,7 +15,10 @@
               <small>(<%= @post.created_at.strftime('%Y/%m/%d %H:%M') %>)</small>
             </div>
             <% if @post.user_id == current_user.id %>
-              <%= button_to "削除", facility_post_path(@facility, @post), method: :delete, class: "btn btn-sm btn-danger me-3" %>
+              <div class="d-flex ml-auto">
+                <%= button_to "編集", edit_facility_post_path(@facility, @post), method: :get, class: "btn btn-sm btn-secondary me-3" %>
+                <%= button_to "削除", facility_post_path(@facility, @post), method: :delete, class: "btn btn-sm btn-danger me-3" %>
+              </div>
             <% end %>
           </div>
           <div class="card-body text-left">
@@ -63,7 +66,7 @@
             </div>
           <% end %>
         <% else %>
-          <h5>コメントはまだありません</h5>
+          <h5 class="text-center mb-4 mt-4">コメントはまだありません</h5>
         <% end %>
       </div>
     </div>

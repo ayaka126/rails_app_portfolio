@@ -1,37 +1,39 @@
 <div class="container mt-5">
-	<h2>検索結果：<%= @facilities.count %>件</h2>
-	<% if @facilities.present? %>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>保育園名</th>
-					<th>住所</th>
-					<th>最寄駅</th>
-					<th>電話番号</th>
-					<th>開園時間</th>
-					<th>HP</th>
-				</tr>
-				</thead>
-			<tbody>
-				<% @facilities.each do |facility| %>
+	<h2 class="text-center mb-4">検索結果：<%= @facilities.count %>件</h2>
+	<div class="table-responsive">
+		<% if @facilities.present? %>
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						<td><%= link_to facility.name, facility_path(facility), style: "font-weight: bold;" %></td>
-						<td><%= truncate(facility.address, length: 15) %></td>
-						<td><%= truncate(facility.station, length: 15) %></td>
-						<td><%= facility.tel %></td>
-						<td><%= truncate(facility.opening_hours, length: 15) %></td>
-						<td>
-							<%= link_to(facility.homepage, target: "_blank") do %>
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
-									<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
-								</svg>
-							<% end %>
-						</td>
+						<th>保育園名</th>
+						<th>住所</th>
+						<th>最寄駅</th>
+						<th>電話番号</th>
+						<th>開園時間</th>
+						<th>HP</th>
 					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	<% else %>
-		<p style="font-size: 20px;">該当する保育園が見つかりませんでした。</p>
-	<% end %>
+					</thead>
+				<tbody>
+					<% @facilities.each do |facility| %>
+						<tr>
+							<td><%= link_to facility.name, facility_path(facility), style: "font-weight: bold;" %></td>
+							<td><%= truncate(facility.address, length: 15) %></td>
+							<td><%= truncate(facility.station, length: 15) %></td>
+							<td><%= facility.tel %></td>
+							<td><%= truncate(facility.opening_hours, length: 15) %></td>
+							<td>
+								<%= link_to(facility.homepage, target: "_blank") do %>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+										<path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
+									</svg>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		<% else %>
+			<h3 class="text-center mt-4 mb-4">該当する保育園が見つかりませんでした。</h3>
+		<% end %>
+	</div>
 </div>

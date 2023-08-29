@@ -46,6 +46,10 @@ h1{
   font-weight: bold;
 }
 
+h2 {
+  font-weight: bold;
+}
+
 .container{
   text-align: center;
   width: 100%;
@@ -57,9 +61,7 @@ h1{
 }
 
 .field {
-  width: 70%;
-  padding: 10px;
-  margin: auto;
+  width: 100%;
 }
 
 .form-label{
@@ -67,11 +69,11 @@ h1{
 }
 
 .form-field{
-  width: 600px;
+  width: 100%;
 }
 
 .field .form-control {
-  width: 100%; /* フォームコントロールを幅100%に調整 */
+  width: 100%;
 }
 
 .form-check {
@@ -82,12 +84,16 @@ h1{
   z-index: 2;
 }
 
-input{
+.header-search input {
   width: 300px;
-  height: 50px;
-  padding: 10px 15px;
-  margin: 15px;
+  height: 35px;
   font-size: 15px
+}
+
+.header-search input.btn {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
 }
 
 .alert li{
@@ -99,7 +105,6 @@ input{
   margin-bottom: 1rem;
   background-color: #f8f9fa;
   color: #343a40;
-  margin: 15px;
 }
 
 /* テーブルヘッダーのスタイル */
@@ -107,11 +112,9 @@ input{
   background-color: #FFF;
   color: black;
   text-align: left;
-  padding: 15px;
 }
 .table tr {
   text-align: left;
-  padding: 15px;
 }
 
 /* テーブル内のリンクのスタイル */
@@ -123,18 +126,23 @@ input{
   text-decoration: underline;
 }
 
-a{
+a {
   text-decoration: none;
   color: black;
 }
 
-.box{
+.box {
   display: flex;
   justify-content: space-around;
   margin: 50px;
 }
-.search{
+.search {
   width: 100%;
+}
+
+.search input {
+  width: 300px;
+  height: 50px;
 }
 
 .map-container {
@@ -152,12 +160,8 @@ h3.text-center {
   margin-top: 30px;
   font-weight: bold;
 }
-.search-title{
+.search-title {
   font-weight: bold;
   margin-bottom: 30px;
   margin-top: 30px;
-}
-
-.back{
-  margin-bottom: 30px;
 }

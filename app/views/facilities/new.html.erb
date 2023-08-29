@@ -1,32 +1,43 @@
-<h1>新規保育園登録</h1>
-<%= form_with model: @facility, local: true, class: "mt-4 form-column-width" do |f| %>
-	<%= render "shared/error", object: f.object %>
-<div class="field">
-	<%= f.label :name, "保育園名", class: "form-label fw-bold" %>
-  <%= f.text_field :name, autofocus: true, placeholder: "保育園名を入力してください", class: "form-control" %>
+<div class="container mt-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<h1 class="text-center mt-3">新規保育園登録</h1>
+			<%= form_with model: @facility, local: true, class: "mt-4 form-column-width" do |f| %>
+				<%= render "shared/error", object: f.object %>
+				<div class="field">
+					<%= f.label :name, "保育園名", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :name, autofocus: true, placeholder: "保育園名を入力してください", class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :address, "住所", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :address, autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :station, "最寄駅", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :station, autofocus: true, placeholder: "最寄駅を入力してください", class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :tel, "電話番号", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :tel, autofocus: true, placeholder: "電話番号を入力してください", class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :opening_hours, "開園時間", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :opening_hours, autofocus: true, placeholder: "開園時間を入力してください", class: "form-control" %>
+				</div>
+				<div class="field">
+					<%= f.label :homepage, "HP", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :homepage, autofocus: true, placeholder: "HPのリンクを入力してください", class: "form-control" %>
+				</div>
+				<div class = "acition">
+					<%= f.submit "新規登録", class: "btn btn-primary mb-4 mt-4", data: { turbo: false } %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+			<%= link_to "←保育園一覧へ戻る", facilities_path, class: "btn btn-light float-start mt-3" %>
+		</div>
+	</div>
 </div>
-<div class = "field">
-	<%= f.label :address, "住所", class: "form-label fw-bold" %>
-	<%= f.text_field :address, autofocus: true, placeholder: "住所を入力してください", class: "form-control" %>
-</div>
-<div class = "field">
-	<%= f.label :station, "最寄駅", class: "form-label fw-bold" %>
-	<%= f.text_field :station, autofocus: true, placeholder: "最寄駅を入力してください", class: "form-control" %>
-</div>
-<div class = "field">
-	<%= f.label :tel, "電話番号", class: "form-label fw-bold" %>
-	<%= f.text_field :tel, autofocus: true, placeholder: "電話番号を入力してください", class: "form-control" %>
-</div>
-<div class = "field">
-	<%= f.label :opening_hours, "開園時間", class: "form-label fw-bold" %>
-	<%= f.text_field :opening_hours, autofocus: true, placeholder: "開園時間を入力してください", class: "form-control" %>
-</div>
-<div class="field">
-  <%= f.label :homepage, "HP", class: "form-label fw-bold" %>
-  <%= f.text_field :homepage, autofocus: true, placeholder: "HPのリンクを入力してください", class: "form-control" %>
-</div>
-<div class = "acition">
-	<%= f.submit "新規登録", class: "btn btn-primary mb-4", data: { turbo: false } %>
-</div>
-  <%= link_to "保育園一覧へ戻る", facilities_path %>
-<% end %>
+
