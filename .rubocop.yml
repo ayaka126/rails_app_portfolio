@@ -40,6 +40,9 @@ Style/AsciiComments:
 Style/StringLiterals:
   Enabled: false
 
+Style/EmptyMethod:
+  Enabled: false
+
 Rails/I18nLocaleTexts:
   Enabled: false
 
