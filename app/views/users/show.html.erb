@@ -4,31 +4,43 @@
 			<h2 class="text-center mt-3 mb-3">マイページ</h2>
       <div class="card">
         <div class="card-body">
-          <div class="d-flex align-items-center mb-3">
+          <div class="d-flex align-items-center">
             <% if current_user.userimage.attached? %>
-              <%= image_tag current_user.userimage.variant(resize_to_limit: [70, 70]), class: "img-fluid rounded-circle mb-3" %>
+              <%= image_tag current_user.userimage.variant(resize_to_limit: [60, 60]), class: "img-fluid rounded-circle" %>
             <% else %>
-              <%= image_tag "default_userimage.png", alt: "デフォルトアイコン", class: "img-fluid rounded-circle mb-3", size: "70x70" %>
+              <%= image_tag "default_userimage.png", alt: "デフォルトアイコン", class: "img-fluid rounded-circle", size: "60x60" %>
             <% end %>
-            <h4><%= current_user.username %></h4>
-					</div>
+            <h4 class="mb-0 me-2"><%= current_user.username %></h4>
+            <div class="d-flex">
+              <%= button_to "編集", edit_user_path, method: :get, class: "btn btn-light me-2" %>
+              <%= button_to "削除", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+            </div>
+          </div>
 					<hr>
-					<div class="d-flex align-items-center mb-3" style="padding-left: 20px;">
+					<div class="d-flex align-items-center" style="padding-left: 20px;">
 						<% if current_user.introduction.present? %>
-							<p><%= current_user.introduction %></p>
+							<h6 class="mb-0"><%= current_user.introduction %></h6>
 						<% else %>
-							<p>自己紹介文はまだありません</p>
+							<p class="mb-0">自己紹介文はまだありません</p>
 						<% end %>
 					</div>
 					<hr>
-					<div class="d-flex align-items-center justify-content-center mb-3">
-						<%= link_to "プロフィールを編集", edit_user_path, class: "btn btn-light" %>
-						<%= button_to "アカウントを削除", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
-					</div>
+          <div class="d-flex align-items-center" style="padding-left: 20px;">
+            <% if @favorite_list.present? %>
+              <h6>お気に入り保育園</h6>
+              <ul class="favorite-list">
+                <% @favorite_list.each do |facility| %>
+                  <li><%= link_to facility.name, facility_path(facility) %></li>
+                <% end %>
+              </ul>
+            <% else %>
+              <p>お気に入りの保育園はまだありません</p>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="user-posts mt-4">
-        <h3>あなたの投稿一覧</h3>
+        <h2 class="text-center mt-3 mb-3">あなたの投稿一覧</h2>
         <% if @user_posts.any? %>
           <div class="table-responsive">
             <table class="table table-striped">

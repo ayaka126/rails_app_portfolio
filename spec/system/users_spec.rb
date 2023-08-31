@@ -32,18 +32,18 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content user.introduction
     end
 
-    it 'プロフィール編集とアカウント削除ボタンが表示されていること' do
-      expect(page).to have_content "プロフィールを編集"
-      expect(page).to have_content "アカウントを削除"
+    it '編集と削除ボタンが表示されていること' do
+      expect(page).to have_content "編集"
+      expect(page).to have_content "削除"
     end
 
-    it 'プロフィール編集を押下すると編集画面へ遷移すること' do
-      click_on "プロフィールを編集"
+    it '編集を押下すると編集画面へ遷移すること' do
+      click_on "編集"
       expect(current_path).to eq edit_user_path
     end
 
-    it 'アカウント削除を押下するとトップページへ遷移すること' do
-      click_on "アカウントを削除"
+    it '削除を押下するとトップページへ遷移すること' do
+      click_on "削除"
       expect(current_path).to eq root_path
     end
 

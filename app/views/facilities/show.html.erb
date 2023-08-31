@@ -30,6 +30,22 @@
               <% end %>
             </td>
           </tr>
+          <% if current_user %>
+            <tr>
+              <th>お気に入り登録</th>
+              <td>
+                <% if current_user.already_favorited?(@facility) %>
+                  <%= link_to facility_favorites_path(@facility), data: { turbo_method: :delete } do %>
+                    <i class="fas fa-heart", id="favorite-btn", style="color: red;"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to facility_favorites_path(@facility), data: { turbo_method: :post } do %>
+                    <i class="far fa-heart", id="not-favorite-btn"></i>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
       <div class="text-center">

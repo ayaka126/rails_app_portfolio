@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(session[:user_id])
     @user_posts = @user.posts
+    favorites = Favorite.where(user_id: current_user.id).pluck(:facility_id)
+    @favorite_list = Facility.find(favorites)
   end
 
   def new

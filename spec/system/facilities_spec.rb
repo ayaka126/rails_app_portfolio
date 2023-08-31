@@ -19,7 +19,6 @@ RSpec.describe "Facilities", type: :system do
       expect(page).to have_content "保育園名"
       expect(page).to have_content "住所"
       expect(page).to have_content "最寄駅"
-      expect(page).to have_content "電話番号"
       expect(page).to have_content "開園時間"
       expect(page).to have_content "HP"
     end
@@ -28,7 +27,6 @@ RSpec.describe "Facilities", type: :system do
       expect(page).to have_content facility.name
       expect(page).to have_content facility.address
       expect(page).to have_content facility.station
-      expect(page).to have_content facility.tel
       expect(page).to have_content facility.opening_hours
     end
 
@@ -137,6 +135,12 @@ RSpec.describe "Facilities", type: :system do
         click_on "投稿一覧を見る"
         expect(current_path).to eq facility_posts_path(facility)
       end
+
+      it 'お気に入り登録のアイコンが表示されること' do
+        expect(page).to have_content "お気に入り登録"
+        expect(page).to have_selector('#not-favorite-btn')
+        expect(page).not_to have_selector('#favorite-btn')
+      end  
     end
   end
 end

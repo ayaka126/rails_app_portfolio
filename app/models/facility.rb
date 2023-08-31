@@ -1,6 +1,7 @@
 class Facility < ApplicationRecord
     acts_as_mappable lat_column_name: :latitude, lng_column_name: :longitude
     has_many :posts, dependent: :destroy
+    has_many :favorites, dependent: :destroy
     geocoded_by :address
     after_validation :geocode
     validates :name, presence: true, uniqueness: true, length: { minimum: 4, maximum: 30 }

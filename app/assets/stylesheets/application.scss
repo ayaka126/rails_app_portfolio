@@ -96,10 +96,15 @@ h2 {
   font-size: 15px;
 }
 
-.alert li{
+.alert li {
   list-style: none;
 }
-/* テーブルのスタイル */
+
+.favorite-list li {
+  list-style: none;
+  text-align: left;
+}
+
 .table {
   width: 100%;
   margin-bottom: 1rem;
@@ -107,17 +112,16 @@ h2 {
   color: #343a40;
 }
 
-/* テーブルヘッダーのスタイル */
 .table thead th {
   background-color: #FFF;
   color: black;
   text-align: left;
 }
+
 .table tr {
   text-align: left;
 }
 
-/* テーブル内のリンクのスタイル */
 .table a {
   color: #444;
   text-decoration: none;

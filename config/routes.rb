@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post   'guest_login', to: "guest_sessions#create"
   resource :user
   resources :facilities do
+    resource :favorites, only: [:create, :destroy]
     collection do
       get 'search'
       get 'search_by_area'
