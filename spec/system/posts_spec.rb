@@ -35,13 +35,13 @@ RSpec.describe "Posts", type: :system do
       expect(page).to have_content post.created_at.strftime('%Y/%m/%d %H:%M')
     end
 
-    it '施設一覧へ戻るリンクが表示されていること' do
-      expect(page).to have_content "施設一覧へ戻る"
+    it '保育園詳細へ戻るリンクが表示されていること' do
+      expect(page).to have_content "保育園詳細へ戻る"
     end
 
-    it '施設一覧へ戻るを押下すると施設一覧ページへ遷移すること' do
-      click_on "施設一覧へ戻る"
-      expect(current_path).to eq facilities_path
+    it '保育園詳細へ戻るを押下すると保育園詳細ページへ遷移すること' do
+      click_on "保育園詳細へ戻る"
+      expect(current_path).to eq facility_path(facility)
     end
 
     it '新規投稿するボタンが表示されていること' do

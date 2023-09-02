@@ -1,3 +1,4 @@
+<% content_for(:title, @facility.name) %>
 <div class="container mt-5">
 	<h1 class="text-center mb-4"><%= @facility.name %></h1>
 	<% if @facility.posts.present? %>
@@ -30,8 +31,8 @@
 	<% end %>
 	<div class="row justify-content-center">
     <div class="col-lg-8">
-			<%= link_to "新規投稿する",new_facility_post_path, class: "btn btn-warning mt-3" %>
-			<%= link_to "←施設一覧へ戻る", facilities_path, class: "btn btn-light float-start mt-3"%>
+			<%= link_to "新規投稿する", new_facility_post_path, class: "btn btn-warning mt-3" %>
+			<%= link_to "←保育園詳細へ戻る", facility_path(@facility), class: "btn btn-light float-start mt-3"%>
 		</div>
 	</div>
 </div>

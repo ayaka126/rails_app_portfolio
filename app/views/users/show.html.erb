@@ -1,27 +1,28 @@
+<% content_for(:title, @user.username + 'のマイページ') %>
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-8">
 			<h2 class="text-center mt-3 mb-3">マイページ</h2>
       <div class="card">
-        <div class="card-body">
+        <div class="card-header justify-content-between align-items-center">
           <div class="d-flex align-items-center">
             <% if current_user.userimage.attached? %>
-              <%= image_tag current_user.userimage.variant(resize_to_limit: [60, 60]), class: "img-fluid rounded-circle" %>
+              <%= image_tag current_user.userimage.variant(resize_to_limit: [60, 60]), class: "img-fluid rounded-circle me-2" %>
             <% else %>
-              <%= image_tag "default_userimage.png", alt: "デフォルトアイコン", class: "img-fluid rounded-circle", size: "60x60" %>
+              <%= image_tag "default_userimage.png", alt: "デフォルトアイコン", class: "img-fluid rounded-circle me-2", size: "60x60" %>
             <% end %>
             <h4 class="mb-0 me-2"><%= current_user.username %></h4>
             <div class="d-flex">
-              <%= button_to "編集", edit_user_path, method: :get, class: "btn btn-light me-2" %>
-              <%= button_to "削除", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+              <%= button_to "編集", edit_user_path, method: :get, class: "btn btn-sm btn-secondary ml-auto me-3" %>
+              <%= button_to "削除", user_path(current_user.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger ml-auto me-3" %>
             </div>
           </div>
 					<hr>
 					<div class="d-flex align-items-center" style="padding-left: 20px;">
 						<% if current_user.introduction.present? %>
-							<h6 class="mb-0"><%= current_user.introduction %></h6>
+							<h6 class="mt-2 mb-2"><%= current_user.introduction %></h6>
 						<% else %>
-							<p class="mb-0">自己紹介文はまだありません</p>
+							<p class="mt-2 mb-2">自己紹介文はまだありません</p>
 						<% end %>
 					</div>
 					<hr>

@@ -1,3 +1,4 @@
+<% content_for(:title, @facility.name) %>
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-8">
@@ -5,23 +6,23 @@
       <table class="table">
         <tbody>
           <tr>
-            <th>住所</th>
+            <th style="width: 35%;">住所</th>
             <td><%= @facility.address %></td>
           </tr>
           <tr>
-            <th>最寄駅</th>
+            <th style="width: 35%;">最寄駅</th>
             <td><%= @facility.station %></td>
           </tr>
           <tr>
-            <th>電話番号</th>
+            <th style="width: 35%;">電話番号</th>
             <td><%= @facility.tel %></td>
           </tr>
           <tr>
-            <th>開園時間（延長含む）</th>
+            <th style="width: 35%;">開園時間（延長含む）</th>
             <td><%= @facility.opening_hours %></td>
           </tr>
           <tr>
-            <th>HPリンク</th>
+            <th style="width: 35%;">HPリンク</th>
             <td class="link-icon">
               <%= link_to(@facility.homepage, target: "_blank") do %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
@@ -50,45 +51,45 @@
       </table>
       <div class="text-center">
         <div class="col-lg-8">
-          <%= link_to "←戻る", :back, class: "btn btn-light float-start mt-3" %>
+          <%= link_to "←戻る", :back, class: "btn btn-light float-start mb-3" %>
         </div>
-      <% if current_user %>
-        <%= link_to "投稿一覧を見る", facility_posts_path(@facility), class: "btn btn-warning btn-lg mt-3" %>
-      <% else %>
-        <p>＼ログインすると投稿一覧が見られます／</p>
-        <%= link_to "> 新規登録がまだの方", new_user_path, class: "btn btn-light ms-3" %>
-        <%= link_to "> ログインする", login_path, class: "btn btn-light ms-3" %>
-      <% end %>
+        <% if current_user %>
+          <%= link_to "投稿一覧を見る", facility_posts_path(@facility), class: "btn btn-warning mb-3" %>
+        <% else %>
+          <p>＼ログインすると投稿一覧が見られます／</p>
+          <%= link_to "> 新規登録がまだの方", new_user_path, class: "btn btn-light ms-3" %>
+          <%= link_to "> ログインする", login_path, class: "btn btn-light ms-3" %>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="col-md-4">
-    <div id="map" style="height: 400px; width: 100%;"></div>
-    <script>
-      function initMap(){
-        // 地図の位置情報(緯度・経度)を取得
-        let mapPosition = {lat: <%= @facility.latitude %> , lng: <%= @facility.longitude %> };
-        let map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: mapPosition
-        });
-        let transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
+    <div class="col-md-4">
+      <div id="map" style="height: 400px; width: 100%;"></div>
+      <script>
+        function initMap(){
+          // 地図の位置情報(緯度・経度)を取得
+          let mapPosition = {lat: <%= @facility.latitude %> , lng: <%= @facility.longitude %> };
+          let map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: mapPosition
+          });
+          let transitLayer = new google.maps.TransitLayer();
+          transitLayer.setMap(map);
 
-        let contentString = '【住所】<%= @facility.address %>';
-        let infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+          let contentString = '【住所】<%= @facility.address %>';
+          let infowindow = new google.maps.InfoWindow({
+            content: contentString
+          });
 
-        let marker = new google.maps.Marker({
-          position: mapPosition,
-          map: map,
-          title: contentString
-        });
+          let marker = new google.maps.Marker({
+            position: mapPosition,
+            map: map,
+            title: contentString
+          });
 
-        marker.addListener('click', function(){
-          infowindow.open(map, marker);
-        });
-      }
+          marker.addListener('click', function(){
+            infowindow.open(map, marker);
+          });
+        }
       </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
     </div>

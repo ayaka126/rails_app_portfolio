@@ -7,52 +7,71 @@ RSpec.describe "Facilities", type: :system do
   let!(:comment){ create(:comment, user: user, post: post)}
 
   describe "保育園一覧ページ" do
-    before do
-      visit facilities_path
-    end
+    context 'ログアウトしている場合' do
+      before do
+        visit facilities_path
+      end
 
-    it '保育園一覧が表示されていること' do
-      expect(page).to have_content "北区の保育園一覧"
-    end
+      it '保育園一覧が表示されていること' do
+        expect(page).to have_content "北区の保育園一覧"
+      end
 
-    it '保育園一覧の各項目が表示されていること' do
-      expect(page).to have_content "保育園名"
-      expect(page).to have_content "住所"
-      expect(page).to have_content "最寄駅"
-      expect(page).to have_content "開園時間"
-      expect(page).to have_content "HP"
-    end
+      it '保育園一覧の各項目が表示されていること' do
+        expect(page).to have_content "保育園名"
+        expect(page).to have_content "住所"
+        expect(page).to have_content "最寄駅"
+        expect(page).to have_content "開園時間"
+        expect(page).to have_content "HP"
+      end
 
-    it '保育園一覧の各項目の内容が表示されていること' do
-      expect(page).to have_content facility.name
-      expect(page).to have_content facility.address
-      expect(page).to have_content facility.station
-      expect(page).to have_content facility.opening_hours
-    end
+      it '保育園一覧の各項目の内容が表示されていること' do
+        expect(page).to have_content facility.name
+        expect(page).to have_content facility.address
+        expect(page).to have_content facility.station
+        expect(page).to have_content facility.opening_hours
+      end
 
-    it 'HPリンクがアイコンとして表示されていること' do
-      within ".table" do
-        within ".link-icon" do
-          link = find("a")
-          expect(link).to have_selector("svg.bi-arrow-up-right-square") 
+      it 'HPリンクがアイコンとして表示されていること' do
+        within ".table" do
+          within ".link-icon" do
+            link = find("a")
+            expect(link).to have_selector("svg.bi-arrow-up-right-square") 
+          end
         end
       end
-    end
 
-    it 'HPリンクのアイコンを押下すると新しいタブでリンク先が開かれること' do
-      within ".table" do
-        within ".link-icon" do
-          link = find("a")
-          expect(link[:target]).to eq("_blank")
+      it 'HPリンクのアイコンを押下すると新しいタブでリンク先が開かれること' do
+        within ".table" do
+          within ".link-icon" do
+            link = find("a")
+            expect(link[:target]).to eq("_blank")
+          end
         end
       end
+
+      it '保育園名を押下すると保育園の詳細ページに遷移すること' do
+        within "tbody tr" do
+          click_on facility.name
+        end
+        expect(current_path).to eq facility_path(facility)
+      end
     end
 
-    it '保育園名を押下すると保育園の詳細ページに遷移すること' do
-      within "tbody tr" do
-        click_on facility.name
+      context 'ログインしている場合' do
+        before do
+          visit login_path
+          fill_in "email", with: user.email
+          fill_in "password", with: user.password
+          within ".login_button" do
+            click_on "ログイン"
+          end
+          visit facility_path(facility)
+        end
+
+      it 'お気に入り登録のアイコンが表示されること' do
+        expect(page).to have_selector('#not-favorite-btn')
+        expect(page).not_to have_selector('#favorite-btn')
       end
-      expect(current_path).to eq facility_path(facility)
     end
   end
   describe "保育園詳細ページ" do

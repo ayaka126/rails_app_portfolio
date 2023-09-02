@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>北区の保育園.com</title>
+    <title><%= content_for?(:title) ? yield(:title)+'|'+'北区の保育園交流スペース' : '北区の保育園交流スペース' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1f93d65a21.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
     <div class="fixed-top">
