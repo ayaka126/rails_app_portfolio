@@ -6,6 +6,9 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
+						<% if current_user %>
+							<th></th>
+						<% end %>
 						<th>保育園名</th>
 						<th>住所</th>
 						<th>最寄駅</th>
@@ -15,8 +18,21 @@
 					</tr>
 					</thead>
 				<tbody>
-					<% @facilities.each do |facility| %>
-						<tr>
+					<tr>
+						<% @facilities.each do |facility| %>
+							<% if current_user %>
+								<td>
+									<% if current_user.already_favorited?(facility) %>
+										<%= link_to facility_favorites_path(facility), data: { turbo_method: :delete } do %>
+											<i class="fas fa-heart", id="favorite-btn", style="color: red;"></i>
+										<% end %>
+									<% else %>
+										<%= link_to facility_favorites_path(facility), data: { turbo_method: :post } do %>
+											<i class="far fa-heart", id="not-favorite-btn"></i>
+										<% end %>
+									<% end %>
+								</td>
+							<% end %>
 							<td><%= link_to facility.name, facility_path(facility), style: "font-weight: bold;" %></td>
 							<td><%= truncate(facility.address, length: 15) %></td>
 							<td><%= truncate(facility.station, length: 15) %></td>
