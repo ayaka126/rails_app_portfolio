@@ -16,6 +16,7 @@ COPY Gemfile /app/Gemfile
 
 COPY Gemfile.lock /app/Gemfile.lock
 
+RUN apt-get update && apt-get install -y libvips42
 # RubyGemsをアップデート
 RUN gem update --system ${RUBYGEMS_VERSION} && \
     bundle install

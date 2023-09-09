@@ -1,0 +1,171 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ * require_tree .  
+ *= require_self
+ */
+
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+.navbar {
+  background-color: rgba(255,204,204,0.3);
+  background-blend-mode:lighten;
+  height: 70px;
+}
+
+.navbar-collapse.show {
+  background-color: #f8f9fa;
+}
+
+body {
+	height: 100%;
+  width: 100%;
+  background-image: image-url('top_image.jpg');
+  background-size: cover;
+  background-color:rgba(255,255,255,0.3);
+  background-blend-mode:lighten;
+  background-attachment: fixed;
+  text-align: center;
+  padding-top: 80px;
+  padding-bottom: 30px;
+  }
+
+h1{
+  font-family: 'Anton', sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.container{
+  text-align: center;
+  width: 100%;
+  }
+
+.container h1{
+  margin: 15px;
+  font-family:  'Cabin', sans-serif;
+}
+
+.field {
+  width: 100%;
+}
+
+.form-label{
+  font-size: 20px;
+}
+
+.form-field{
+  width: 100%;
+}
+
+.field .form-control {
+  width: 100%;
+}
+
+.form-check {
+  font-weight: 400;
+}
+
+.form-floating:focus-within {
+  z-index: 2;
+}
+
+.header-search input {
+  width: 300px;
+  height: 35px;
+  font-size: 15px
+}
+
+.header-search input.btn {
+  width: 100px;
+  height: 35px;
+  font-size: 15px;
+}
+
+.alert li {
+  list-style: none;
+}
+
+.favorite-list li {
+  list-style: none;
+  text-align: left;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+.table thead th {
+  background-color: #FFF;
+  color: black;
+  text-align: left;
+}
+
+.table tr {
+  text-align: left;
+}
+
+.table a {
+  color: #444;
+  text-decoration: none;
+}
+.table a:hover {
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.box {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px;
+}
+.search {
+  width: 100%;
+}
+
+.search input {
+  width: 300px;
+  height: 50px;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.area-search {
+  width: 100%;
+}
+
+h3.text-center {
+  margin-top: 30px;
+  font-weight: bold;
+}
+.search-title {
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}

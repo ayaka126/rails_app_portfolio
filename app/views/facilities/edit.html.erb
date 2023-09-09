@@ -1,0 +1,44 @@
+<% content_for(:title, @facility.name + 'を編集') %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+			<h2 class="text-center mt-3"><%= @facility.name %>を編集する</h2>
+			<%= form_with model: @facility, local: true do |f| %>
+				<%= render "shared/error", object: f.object %>
+				<div class="field">
+					<%= f.label :name, "保育園名", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :name, autofocus: true, class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :address, "住所", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :address, autofocus: true, class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :station, "最寄駅", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :station, autofocus: true, class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :tel, "電話番号", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :tel, autofocus: true, class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :opening_hours, "開園時間", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :opening_hours, autofocus: true, class: "form-control" %>
+				</div>
+				<div class="field">
+					<%= f.label :homepage, "HP", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :homepage, autofocus: true, class: "form-control" %>
+				</div>
+				<div class="acition">
+					<%= f.submit "編集を完了する", class: "btn btn-primary mb-4 mt-4", data: { turbo: false } %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+			<%= link_to "詳細ページへ戻る", facility_path(@facility) %> |
+			<%= link_to "保育園一覧へ戻る", facilities_path %>
+		</div>
+	</div>
+</div>

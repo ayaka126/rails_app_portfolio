@@ -1,0 +1,50 @@
+<% content_for(:title, '保育園一覧') %>
+<div class="container mt-5">
+  <h1 class="text-center mb-4">北区の保育園一覧</h1>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <% if current_user %>
+            <th></th>
+          <% end %>
+          <th>保育園名</th>
+          <th>住所</th>
+          <th>最寄駅</th>
+          <th>開園時間</th>
+          <th>HP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <% @facilities.each do |facility| %>
+            <% if current_user %>
+              <td>
+                <% if current_user.already_favorited?(facility) %>
+                  <%= link_to facility_favorites_path(facility), data: { turbo_method: :delete } do %>
+                    <i class="fas fa-heart", id="favorite-btn", style="color: red;"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to facility_favorites_path(facility), data: { turbo_method: :post } do %>
+                    <i class="far fa-heart", id="not-favorite-btn"></i>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+            <td><%= link_to facility.name, facility_path(facility), style: "font-weight: bold;" %></td>
+            <td><%= truncate(facility.address, length: 15) %></td>
+            <td><%= truncate(facility.station, length: 15) %></td>
+            <td><%= truncate(facility.opening_hours, length: 15) %></td>
+            <td class="link-icon">
+              <%= link_to(facility.homepage, target: "_blank") do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right-square" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z"/>
+                </svg>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

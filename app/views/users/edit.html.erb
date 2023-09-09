@@ -1,0 +1,35 @@
+<% content_for(:title, 'ユーザー情報編集') %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+			<h2 class="text-center mt-3">ユーザー情報を編集</h2>
+			<%= form_with model: @user do |f| %>
+				<%= render "shared/error", object: f.object %>
+				<div class="field">
+					<%= f.label :name, "お名前", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :username, autofocus: true, placeholder: "お名前を入力してください", class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :email, "メールアドレス", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :email, autofocus: true, placeholder: "メールアドレスを入力してください", class: "form-control" %>
+				</div>
+				<div class = "field">
+					<%= f.label :introduction, "自己紹介文", class: "form-label fw-bold mt-3" %>
+					<%= f.text_field :introduction, autofocus: true, placeholder: "簡単な自己紹介文を入力してください（任意）", class: "form-control" %>
+				</div>
+				<div class="field">
+					<%= f.label :userimage, "アイコン画像", class: "form-label fw-bold mt-3" %>
+					<%= f.file_field :userimage %>
+				</div>
+				<div class="acition">
+					<%= f.submit "編集を完了する", class: "btn btn-primary mb-4 mt-4" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-lg-8">
+			<%= link_to "←マイページに戻る", user_path, class: "btn btn-light float-start mt-3" %>
+		</div>
+	</div>
+</div>
